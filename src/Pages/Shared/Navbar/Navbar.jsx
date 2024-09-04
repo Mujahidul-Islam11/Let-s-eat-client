@@ -36,7 +36,7 @@ const Navbar = () => {
           <Link to={"/"}>
             <img
               className="w-44 md:w-44 lg:w-56 md:h-24"
-              src="https://imagizer.imageshack.com/img924/6582/D5asgV.png"
+              src="https://imagizer.imageshack.com/img922/4374/m4qNbj.png"
               alt=""
             />
           </Link>
