@@ -5,29 +5,31 @@ const Navbar = () => {
 
     const navLists = (
       <>
-        <Link to="/" className="text-[#000] text-[16px]"><li>Home</li></Link>
-        <Link to="/contact" className="text-[#000] text-[16px]"><li>Contact Us</li></Link>
-        <Link to="/menu" className="text-[#000] text-[16px]"><li>Our Menu</li></Link>
-        <Link to="/shop" className="text-[#000] text-[16px]"><li>Our Shop</li></Link>
-        <Link to="/dashboard" className="text-[#000] text-[16px]"><li>Dashboard</li></Link>
+        <Link to="/" className="text-[#000] lg:text-[16px]"><li>Home</li></Link>
+        <Link to="/contact" className="text-[#000] lg:text-[16px]"><li>Contact Us</li></Link>
+        <Link to="/menu" className="text-[#000] lg:text-[16px]"><li>Our Menu</li></Link>
+        <Link to="/shop" className="text-[#000] lg:text-[16px]"><li>Our Shop</li></Link>
+        <Link to="/dashboard" className="text-[#000] lg:text-[16px]"><li>Dashboard</li></Link>
       </>
     );
 
   return (
     <div className="">
-      <nav className="border rounded-md mt-4 w-full flex items-center px-6">
-        <div id="nav-1" className="w-[25%]">
+      <nav className="border rounded-md mt-4 w-full flex justify-between items-center px-6">
+        <div id="nav-1" className="md:w-[25%] flex items-center gap-3">
           {/* Small device menu button */}
-          <div id="smallNav"></div>
+          <div id="smallNav" className="block md:hidden text-3xl mt-7">
+          <ion-icon name="menu-outline"></ion-icon>
+          </div>
           <img
-            className="w-56 h-24 object-cover"
+            className="w-44 md:w-44 lg:w-56 md:h-24"
             src="https://imagizer.imageshack.com/img924/6582/D5asgV.png"
             alt=""
           />
         </div>
 
-        <div id="nav-2" className="w-[50%] h-24 flex items-center">
-          <ul className="flex gap-10 mt-3">
+        <div id="nav-2" className="hidden md:flex items-center w-[50%] h-24">
+          <ul className="flex md:gap-3 lg:gap-10 mt-3">
             {navLists}
           </ul>
         </div>
@@ -54,14 +56,8 @@ const Navbar = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
-                <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Settings</a>
+                <li className="">
+                  <h3 className="text-sm text-[#000]">Mohammad Mojahidul Islam</h3>
                 </li>
                 <li>
                   <a>Logout</a>
