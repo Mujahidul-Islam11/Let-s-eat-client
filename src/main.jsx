@@ -10,7 +10,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className="mx-6 md:mx-2 lg:max-w-7xl mx-auto">
+    <div className="mx-6 md:mx-4 lg:max-w-7xl lg:mx-auto">
     <RouterProvider router={router} />
     </div>
   </React.StrictMode>
