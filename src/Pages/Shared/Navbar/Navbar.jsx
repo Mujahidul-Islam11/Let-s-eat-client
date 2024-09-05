@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [openMenu, setOpenMenu] = useState(false);
   const navLists = (
     <>
       <li className="hover:text-[#F0C333] transition duration-300">
@@ -39,9 +40,10 @@ const Navbar = () => {
         <div className="flex items-center">
           {/* Small device menu button */}
           <div className="block md:hidden text-2xl md:text-3xl cursor-pointer mt-5">
-            <ion-icon name="menu-outline"></ion-icon>
+            {openMenu ? <button onClick={()=> setOpenMenu(false)}><ion-icon name="close-outline"></ion-icon></button>:
+            <button onClick={()=> setOpenMenu(true)}><ion-icon name="menu-outline"></ion-icon></button>}
           </div>
-          <Link to={"/"} className="ml-4">
+          <Link to={"/"} className="">
             <img
               className="w-32 md:w-44 lg:w-56"
               src="https://imagizer.imageshack.com/img922/4374/m4qNbj.png"
