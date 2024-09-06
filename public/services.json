@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Corporate Catering",
+    "icon": "briefcase-outline",
+    "description": "We offer comprehensive catering services for corporate events, ensuring a professional and satisfying dining experience."
+  },
+  {
+    "title": "Event Planning Assistance",
+    "icon": "calendar-clear-outline",
+    "description": "Our team assists with planning every aspect of your food and beverage needs for any event, ensuring everything is perfectly organized."
+  },
+  {
+    "title": "Wedding Catering",
+    "icon": "heart-outline",
+    "description": "Delight your guests with our exquisite wedding meal options, customized to fit your tastes and preferences."
+  },
+  {
+    "title": "Bar Service",
+    "icon": "cafe-outline",
+    "description": "Provide a premium bar experience with a wide selection of beverages to complement your event."
+  },
+  {
+    "title": "Event Staffing",
+    "icon": "people-outline",
+    "description": "Our professional staff will ensure that all food and beverage services are managed smoothly during your event."
+  },
+  {
+    "title": "Drop Off Catering",
+    "icon": "car-outline",
+    "description": "Enjoy convenient drop-off catering services with delicious food options for any occasion, delivered right to your location."
+  }
+]
