@@ -1,0 +1,17 @@
+[
+  {
+    "url": "https://images.unsplash.com/photo-1494390248081-4e521a5940db?q=80&w=1406&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title": "Let's Eat",
+    "desc": "Order your meal now, let's eat together."
+  },
+  {
+    "url": "https://images.unsplash.com/photo-1478144592103-25e218a04891?q=80&w=1375&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title": "Fresh & Tasty",
+    "desc": "Discover a wide variety of delicious meals."
+  },
+  {
+    "url": "https://images.unsplash.com/photo-1700513971603-eda40374ba0a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title": "Savor the Moment",
+    "desc": "Enjoy your favorite food with quick delivery."
+  }
+]

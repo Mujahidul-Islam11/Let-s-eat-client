@@ -36,7 +36,7 @@ const Navbar = ({openMenu, setOpenMenu}) => {
   return (
     <div className="">
     {/*drawer start - Small device */}
-    {openMenu&&<div className="w-44 h-40 bg-base-100 absolute top-20 left-3 shadow-md px-6 py-3">
+    {openMenu&&<div className="z-50 w-44 h-40 bg-base-100 absolute top-20 left-3 shadow-md px-6 py-3">
       <ul className="space-y-1">
         {navLists}
       </ul>
@@ -74,7 +74,7 @@ const Navbar = ({openMenu, setOpenMenu}) => {
           <div className="text-lg md:text-2xl border border-yellow-200 flex justify-center items-center shadow-md cursor-pointer rounded-full p-2 md:p-3">
             <ion-icon name="cart-outline"></ion-icon>
           </div>
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end z-50">
             <div
               tabIndex={0}
               role="button"
