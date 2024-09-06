@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
+import { NavLink } from "react-router-dom";
 
 const OurMenu = () => {
   const [menu, setMenu] = useState([]);
@@ -41,6 +42,11 @@ const OurMenu = () => {
           </div>
         ))}
       </div>
+      <NavLink to={"/menu"}>
+      <button className="bg-yellow-400 font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md mx-auto flex justify-center mt-6">
+        View More
+      </button>
+      </NavLink>
     </section>
   );
 };
