@@ -4,6 +4,7 @@ import AboutUs from '../AboutUs/AboutUs';
 import Services from '../Services/Services';
 import OurMenu from '../OurMenu/OurMenu';
 import OurChefs from '../OurChefs/OurChefs';
+import Newsletter from '../Newsletter/Newsletter';
 
 const Home = () => {
     return (
@@ -12,7 +13,7 @@ const Home = () => {
            <AboutUs></AboutUs>
            <Services></Services>
            <OurMenu></OurMenu>
-           <OurChefs></OurChefs>
+           <Newsletter></Newsletter>
         </div>
     );
 };
