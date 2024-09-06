@@ -34,7 +34,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-white shadow-lg mt-4">
+    <div className="bg-white shadow-lg mt-4 mx-4 lg:mx-0">
       <nav className="border-b w-full flex justify-between items-center px-4 md:px-6 py-2">
         {/* nav-1 start*/}
         <div className="flex items-center">
