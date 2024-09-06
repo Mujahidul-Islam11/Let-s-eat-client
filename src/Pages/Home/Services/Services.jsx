@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -20,13 +21,12 @@ const Services = () => {
         alt=""
       />
       <div className="container mx-auto px-4 relative z-20">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-4xl font-bold">Our Services</h2>
-          <p className="text-lg text-muted-foreground mt-4">
-            Discover the wide range of services we offer to make your events
-            unforgettable.
-          </p>
-        </div>
+        <SectionTitle
+          title={"Our Services"}
+          desc={
+            "Discover the wide range of services we offer to make your events unforgettable."
+          }
+        ></SectionTitle>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 md:px-20">
           {services?.map((service) => (
             <div
@@ -38,7 +38,9 @@ const Services = () => {
                   <ion-icon name={service?.icon}></ion-icon>
                 </h3>
                 <div>
-                  <h3 className="text-lg md:text-xl font-semibold">{service?.title}</h3>
+                  <h3 className="text-lg md:text-xl font-semibold">
+                    {service?.title}
+                  </h3>
                 </div>
               </div>
               <div className="py-3 md:py-4">
