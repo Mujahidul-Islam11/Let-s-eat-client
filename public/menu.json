@@ -1,0 +1,111 @@
+[
+    {
+      "name": "Grilled Chicken",
+      "img": "https://images.unsplash.com/photo-1594221708779-94832f4320d1?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Main Course",
+      "price": 12.99,
+      "rating": 4.7,
+      "desc": "Juicy grilled chicken served with seasonal vegetables.",
+      "status": "popular"
+    },
+    {
+      "name": "Pasta Alfredo",
+      "img": "https://images.unsplash.com/photo-1597393353365-9d4366392fe9?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Main Course",
+      "price": 14.99,
+      "rating": 4.8,
+      "desc": "Creamy Alfredo sauce over freshly cooked pasta.",
+      "status": "regular"
+    },
+    {
+      "name": "Pepperoni Pizza",
+      "img": "https://images.unsplash.com/photo-1671106681075-5a7233268cbd?q=80&w=1468&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Main Course",
+      "price": 15.99,
+      "rating": 4.7,
+      "desc": "Classic pepperoni pizza with mozzarella cheese and tomato sauce.",
+      "status": "popular"
+    },
+    {
+      "name": "Chicken Curry",
+      "img": "https://plus.unsplash.com/premium_photo-1664391973158-a232138c87fa?q=80&w=1524&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Main Course",
+      "price": 16.99,
+      "rating": 4.5,
+      "desc": "Spicy chicken curry served with jasmine rice.",
+      "status": "regular"
+    },
+    {
+      "name": "Vegan Salad",
+      "img": "https://plus.unsplash.com/premium_photo-1692309186751-2513ec1fa292?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Salads",
+      "price": 9.99,
+      "rating": 4.5,
+      "desc": "A fresh and healthy salad with mixed greens and avocado.",
+      "status": "regular"
+    },
+    {
+      "name": "Caesar Salad",
+      "img": "https://images.unsplash.com/photo-1669283714145-f97867f6c238?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Salads",
+      "price": 8.99,
+      "rating": 4.6,
+      "desc": "Crisp romaine lettuce with Caesar dressing and croutons.",
+      "status": "regular"
+    },
+    {
+      "name": "Greek Salad",
+      "img": "https://plus.unsplash.com/premium_photo-1690561082681-1b140e8be129?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Salads",
+      "price": 10.49,
+      "rating": 4.7,
+      "desc": "Tomatoes, cucumbers, onions, feta cheese, and olives.",
+      "status": "regular"
+    },
+    {
+      "name": "Chicken Salad",
+      "img": "https://images.unsplash.com/photo-1670237735381-ac5c7fa72c51?q=80&w=1406&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Salads",
+      "price": 11.99,
+      "rating": 4.4,
+      "desc": "Grilled chicken over a bed of greens with a light vinaigrette.",
+      "status": "popular"
+    },
+    {
+      "name": "Mango Smoothie",
+      "img": "https://images.unsplash.com/photo-1483918793747-5adbf82956c4?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Beverages",
+      "price": 6.99,
+      "rating": 4.6,
+      "desc": "A refreshing smoothie made from ripe mangoes.",
+      "status": "popular"
+    },
+    {
+      "name": "Iced Coffee",
+      "img": "https://images.unsplash.com/photo-1533000759984-0d977d715f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Beverages",
+      "price": 4.99,
+      "rating": 4.5,
+      "desc": "Chilled coffee brewed to perfection, served with ice.",
+      "status": "regular"
+    },
+    {
+      "name": "Lemonade",
+      "img": "https://images.unsplash.com/photo-1575596510825-f748919a2bf7?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Beverages",
+      "price": 3.99,
+      "rating": 4.4,
+      "desc": "Freshly squeezed lemons with just the right amount of sweetness.",
+      "status": "regular"
+    },
+    {
+      "name": "Green Tea",
+      "img": "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "Beverages",
+      "price": 2.99,
+      "rating": 4.8,
+      "desc": "Hot green tea with a hint of jasmine.",
+      "status": "regular"
+    }
+  ]
+  
