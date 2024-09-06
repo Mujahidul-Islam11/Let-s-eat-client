@@ -6,21 +6,21 @@ import LocomotiveScroll from "locomotive-scroll";
 
 const Main = () => {
   const [openMenu, setOpenMenu] = useState(false);
-  useEffect(() => {
-    const scroll = new LocomotiveScroll({
-        el: document.querySelector('#Landing_page'),
-        smooth: true, 
-    });
+//   useEffect(() => {
+//     const scroll = new LocomotiveScroll({
+//         el: document.querySelector('#Landing_page'),
+//         smooth: true, 
+//     });
 
-    return () => {
-        scroll.destroy();
-    };
-}, []);
+//     return () => {
+//         scroll.destroy();
+//     };
+// }, []);
 
   return (
     <div onClick={() => setOpenMenu(false)} className="relative">
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu}></Navbar>
-      <div id="Landing_page">
+      <div id="">
       <Outlet></Outlet>
       </div>
       <Footer></Footer>
