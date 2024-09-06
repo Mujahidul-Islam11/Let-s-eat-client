@@ -8,7 +8,7 @@ const Services = () => {
       .then((data) => setServices(data));
   }, []);
   return (
-    <section className="my-12 relative overflow-x-hidden">
+    <section className="my-12 relative overflow-x-hidden py-10">
       <img
         className="absolute -right-72 z-10 top-0"
         src="https://imagizer.imageshack.com/img923/8439/ohfUmr.png"
@@ -22,24 +22,24 @@ const Services = () => {
             unforgettable.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 px-20">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 md:px-20">
           {services?.map((service) => (
             <div
               key={service?.title}
-              className="bg-white bg-opacity-70 shadow-md rounded-md px-4 py-5"
+              className="bg-white bg-opacity-70 shadow-md rounded-md px-3 md:px-4 py-4 md:py-5"
             >
-              <div className="flex items-center space-x-4 py-6">
-                <h3 className="text-4xl text-red-400">
+              <div className="flex items-center space-x-4 py-3 md:py-4">
+                <h3 className="text-3xl md:text-4xl text-red-400">
                   <ion-icon name={service?.icon}></ion-icon>
                 </h3>
                 <div>
-                  <h3 className="text-xl font-semibold">{service?.title}</h3>
+                  <h3 className="text-lg md:text-xl font-semibold">{service?.title}</h3>
                 </div>
               </div>
-              <div className="py-6">
-                <p className="text-muted-foreground">{service?.description}</p>
+              <div className="py-3 md:py-4">
+                <p className="text-sm md:text-[16px]">{service?.description}</p>
               </div>
-              <div className="py-6">
+              <div className="py-3 md:py-4">
                 <a href="#" className="hover:text-yellow-600 hover:underline">
                   Learn More
                 </a>
