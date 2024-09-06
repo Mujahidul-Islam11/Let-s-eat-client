@@ -14,6 +14,11 @@ const Services = () => {
         src="https://imagizer.imageshack.com/img923/8439/ohfUmr.png"
         alt=""
       />
+      <img
+        className="absolute -left-60 z-10 bottom-0"
+        src="https://imagizer.imageshack.com/img923/8439/ohfUmr.png"
+        alt=""
+      />
       <div className="container mx-auto px-4 relative z-20">
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-4xl font-bold">Our Services</h2>
