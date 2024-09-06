@@ -3,7 +3,14 @@ import React from "react";
 const Newsletter = () => {
   return (
     <section className="relative my-12 py-20 bg-gray-100 bg-opacity-60 overflow-x-hidden overflow-y-hidden">
-      <div className="container mx-auto text-center">
+      <div className="flex gap-6 absolute -bottom-32 z-10">
+        <img className="w-60 h-60 object-cover" src="https://imagizer.imageshack.com/img923/9705/b0phbX.png" alt="" />
+        <img className="w-60 h-60 -mt-8" src="https://imagizer.imageshack.com/img923/7325/quVt5Z.png" alt="" />
+        <img className="w-60 h-60 -mb-6 object-cover" src="https://imagizer.imageshack.com/img923/4135/I7IcdX.png" alt="" />
+        <img className="w-60 h-60 object-cover" src="https://imagizer.imageshack.com/img922/5521/KlxLSE.png" alt="" />
+        <img className="w-60 h-60 -mt-6 object-cover" src="https://imagizer.imageshack.com/img923/2848/Bo3ekU.png" alt="" />
+      </div>
+      <div className="container mx-auto text-center relative z-20">
         <h2 className="text-3xl font-bold text-gray-800 mb-4">
           Stay Updated with Our Latest News
         </h2>
