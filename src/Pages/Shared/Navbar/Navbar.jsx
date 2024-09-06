@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
-  const [openMenu, setOpenMenu] = useState(false);
+const Navbar = ({openMenu, setOpenMenu}) => {
+  
   const navLists = (
     <>
       <li className="hover:text-[#F0C333] transition duration-300">
@@ -34,12 +34,20 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-white shadow-lg mt-4 mx-4 lg:mx-0">
+    <div className="">
+    {/*drawer start - Small device */}
+    {openMenu&&<div className="w-44 h-40 bg-base-100 absolute top-20 left-3 shadow-md px-6 py-3">
+      <ul className="space-y-1">
+        {navLists}
+      </ul>
+      </div>}
+    {/*drawer end */}
+      <div className="bg-white shadow-lg mt-4 mx-4 lg:mx-0">
       <nav className="border-b w-full flex justify-between items-center px-4 md:px-6 py-2">
         {/* nav-1 start*/}
         <div className="flex items-center">
           {/* Small device menu button */}
-          <div className="block md:hidden text-2xl md:text-3xl cursor-pointer mt-5">
+          <div  onClick={(e_) => e_.stopPropagation()} className="block md:hidden text-2xl md:text-3xl cursor-pointer mt-5">
             {openMenu ? <button onClick={()=> setOpenMenu(false)}><ion-icon name="close-outline"></ion-icon></button>:
             <button onClick={()=> setOpenMenu(true)}><ion-icon name="menu-outline"></ion-icon></button>}
           </div>
@@ -99,6 +107,7 @@ const Navbar = () => {
         </div>
         {/* nav-3 end*/}
       </nav>
+    </div>
     </div>
   );
 };
