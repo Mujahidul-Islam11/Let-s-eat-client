@@ -27,7 +27,6 @@ const Banner = () => {
               style={{
                 backgroundImage: `url(${content?.url})`,
                 backgroundSize: "cover",
-                backgroundAttachment: "fixed",
                 backgroundPosition: "center",
               }}
               className="relative w-full h-[350px] md:h-[600px] object-cover"
