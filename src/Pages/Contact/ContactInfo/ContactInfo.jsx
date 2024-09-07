@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 
 const ContactInfo = () => {
   return (
-    <div className="w-full flex items-center p-10 my-12">
+    <div className="w-full flex flex-col-reverse md:flex-row items-center p-6 md:p-10 my-12 gap-4">
       {/* Part-1 */}
-      <div className="w-1/2 space-y-5">
-        <h3 className="text-xl -mb-3 font-extralight text-red-400"><i>Our Contacts</i></h3>
-        <h2 className="text-5xl">Get in Touch</h2>
-        <p>
+      <div className="mx-4 md:mx-1 w-full md:w-1/2 space-y-5">
+        <h3 className="text-lg md:text-xl -mb-3 font-extralight text-red-400"><i>Our Contacts</i></h3>
+        <h2 className="text-3xl md:text-5xl">Get in Touch</h2>
+        <p className="text-gray-700 font-extralight">
           Have questions, feedback, or special requests? We're here to help!
           Whether you're planning a big event, curious about our menu, or just
           want to say hello, feel free to reach out. Let's make your 'Let's Eat'
@@ -21,7 +21,7 @@ const ContactInfo = () => {
             href="https://www.google.com/maps/place/Rangunia/@22.4700812,92.0462143,14z/data=!3m1!4b1!4m6!3m5!1s0x30ad371e5863866f:0x7ce1e86cb3a24604!8m2!3d22.4698078!4d92.0518154!16s%2Fg%2F121x28tn?entry=ttu&g_ep=EgoyMDI0MDkwNC4wIKXMDSoASAFQAw%3D%3D"
             className="flex gap-3 items-center group"
           >
-            <h3 className="text-3xl border flex rounded-full items-center p-3 bg-yellow-400 text-white transition-all duration-300 cursor-pointer group-hover:bg-white group-hover:border-yellow-300 group-hover:text-black">
+            <h3 className="text-3xl border flex rounded-full items-center p-2 md:p-3 bg-yellow-400 text-white transition-all duration-300 cursor-pointer group-hover:bg-white group-hover:border-yellow-300 group-hover:text-black">
               <ion-icon name="location-outline"></ion-icon>
             </h3>
             <div className="space-y-1">
@@ -33,7 +33,7 @@ const ContactInfo = () => {
             href="mailto:web.dev.dinar@gmail.com"
             className="flex gap-3 items-center group"
           >
-            <h3 className="text-2xl border flex rounded-full items-center p-4 bg-yellow-400 text-white transition-all duration-300 cursor-pointer group-hover:bg-white group-hover:border-yellow-300 group-hover:text-black">
+            <h3 className="text-2xl border flex rounded-full items-center p-3 md:p-4 bg-yellow-400 text-white transition-all duration-300 cursor-pointer group-hover:bg-white group-hover:border-yellow-300 group-hover:text-black">
               <ion-icon name="send-outline"></ion-icon>
             </h3>
             <div className="space-y-1">
@@ -45,7 +45,7 @@ const ContactInfo = () => {
             href="tell:01889112836"
             className="flex gap-3 items-center group"
           >
-            <h3 className="text-3xl border flex rounded-full items-center p-3 bg-yellow-400 text-white transition-all duration-300 cursor-pointer group-hover:bg-white group-hover:border-yellow-300 group-hover:text-black">
+            <h3 className="text-3xl border flex rounded-full items-center p-2 md:p-3 bg-yellow-400 text-white transition-all duration-300 cursor-pointer group-hover:bg-white group-hover:border-yellow-300 group-hover:text-black">
               <ion-icon name="location-outline"></ion-icon>
             </h3>
             <div className="space-y-1">
@@ -57,7 +57,7 @@ const ContactInfo = () => {
       </div>
 
       {/* Part-2 */}
-      <div className="w-1/2">
+      <div className="mx-4 md:mx-1 w-full md:w-1/2">
         <img
         className="w-full h-full mt-12"
           src="https://imagizer.imageshack.com/img924/6039/Tpd5Zk.png"
