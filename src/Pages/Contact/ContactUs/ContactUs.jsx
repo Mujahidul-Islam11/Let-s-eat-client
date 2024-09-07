@@ -1,9 +1,10 @@
 import React from 'react';
+import ContactBanner from '../ContactBanner/ContactBanner';
 
 const ContactUs = () => {
     return (
-        <div>
-            
+        <div className='h-screen'>
+            <ContactBanner></ContactBanner>
         </div>
     );
 };
