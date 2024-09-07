@@ -24,7 +24,7 @@ const OurMenu = () => {
           desc={"Explore our delicious offerings."}
         ></SectionTitle>
       </div>
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 md:mx-0">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 md:mx-0">
         {filteredMenu?.map((item) => (
           <div
             key={item?.name}

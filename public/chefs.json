@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Chef Gordon Ramsay",
+    "img": "https://media.istockphoto.com/id/641991356/photo/chef-cook-at-the-kitchen.jpg?s=1024x1024&w=is&k=20&c=3dWFe4TcfCkS7TSvQCL-WBDHMOc5hskeYBrKdoWI9M4=",
+    "info": "Michelin-starred chef with a bold, fiery approach."
+  },
+  {
+    "id": 2,
+    "name": "Chef Nigella Lawson",
+    "img": "https://plus.unsplash.com/premium_photo-1661778091956-15dbe6e47442?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "info": "Indulgent comfort food and bestselling cookbooks."
+  },
+  {
+    "id": 3,
+    "name": "Chef Jamie Oliver",
+    "img": "https://media.istockphoto.com/id/534305544/photo/chef-working-at-a-food-market.jpg?s=1024x1024&w=is&k=20&c=itX4OC1R2fUTqGGQ1ndL_Z4aIiL1Les-LBI3wBvT664=",
+    "info": "Advocate for healthy eating with simple, delicious recipes."
+  }
+]
