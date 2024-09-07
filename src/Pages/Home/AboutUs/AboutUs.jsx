@@ -21,9 +21,9 @@ const AboutUs = () => {
             risus. Nulla quis lorem ut libero malesuada feugiat.
           </p>
         </div>
-        <button className="bg-yellow-400 font-extralight py-3 px-6 rounded-md hover:bg-yellow-500 transition-all size-fit shadow-md">
-          Read More
-        </button>
+        <button className="bg-yellow-400 font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center mt-6">
+        Read More
+      </button>
       </div>
     </div>
   );
