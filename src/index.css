@@ -32,3 +32,24 @@ body, html{
   font-style: normal;
 }
 
+svg {
+  width: 3.75em;
+  animation: 1.5s spin ease infinite;
+}
+
+.ring {
+  fill: none;
+  stroke: yellow;
+  stroke-width: 2;
+}
+
+.ball {
+  fill: rgb(252, 199, 6);
+  stroke: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
