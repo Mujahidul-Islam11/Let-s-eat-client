@@ -13,7 +13,7 @@ const Banner = () => {
       .then((data) => setContents(data));
   }, []);
   return (
-    <div className="my-3">
+    <div className="">
       <Swiper
         pagination={{
           dynamicBullets: true,

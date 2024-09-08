@@ -20,7 +20,7 @@ const Main = () => {
   return (
     <div onClick={() => setOpenMenu(false)} className="relative">
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu}></Navbar>
-      <div id="">
+      <div className="py-3">
       <Outlet></Outlet>
       </div>
       <Footer></Footer>
