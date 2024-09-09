@@ -2,7 +2,7 @@
     {
       "name": "Grilled Chicken",
       "img": "https://images.unsplash.com/photo-1594221708779-94832f4320d1?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "category": "Main Course",
+      "category": "Chef's Specials",
       "price": 12.99,
       "rating": 4.7,
       "desc": "Juicy grilled chicken served with seasonal vegetables.",
@@ -11,7 +11,7 @@
     {
       "name": "Pasta Alfredo",
       "img": "https://images.unsplash.com/photo-1597393353365-9d4366392fe9?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "category": "Main Course",
+      "category": "Chef's Specials",
       "price": 14.99,
       "rating": 4.8,
       "desc": "Creamy Alfredo sauce over freshly cooked pasta.",
@@ -20,7 +20,7 @@
     {
       "name": "Pepperoni Pizza",
       "img": "https://images.unsplash.com/photo-1671106681075-5a7233268cbd?q=80&w=1468&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "category": "Main Course",
+      "category": "Chef's Specials",
       "price": 15.99,
       "rating": 4.7,
       "desc": "Classic pepperoni pizza with mozzarella cheese and tomato sauce.",
@@ -29,7 +29,7 @@
     {
       "name": "Chicken Curry",
       "img": "https://plus.unsplash.com/premium_photo-1664391973158-a232138c87fa?q=80&w=1524&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "category": "Main Course",
+      "category": "Chef's Specials",
       "price": 16.99,
       "rating": 4.5,
       "desc": "Spicy chicken curry served with jasmine rice.",
