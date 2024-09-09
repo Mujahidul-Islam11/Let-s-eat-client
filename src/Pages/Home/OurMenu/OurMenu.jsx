@@ -38,10 +38,12 @@ const OurMenu = () => {
                 src={item?.img}
                 alt={item?.name}
               />
+              <div className="text-center space-y-2">
               <h3 className="text-lg font-semibold">{item?.name}</h3>
-              <p>{item?.desc}</p>
+              <p className="text-sm">{item?.desc}</p>
               <p className="font-bold text-lg">${item?.price}</p>
               <p className="text-yellow-500">{item?.rating} ★</p>
+              </div>
             </div>
           ))}
         </div>
