@@ -41,7 +41,7 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
         </div>
       )}
       {/*drawer end */}
-      <div className="bg-white shadow-lg mt-4 mx-4 lg:mx-0">
+      <div className="bg-white shadow-lg mt-4 mx-2 lg:mx-0">
         <nav className="border-b w-full flex justify-between items-center px-4 md:px-6 py-2">
           {/* nav-1 start*/}
           <div className="flex items-center">
