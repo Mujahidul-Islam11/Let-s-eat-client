@@ -11,11 +11,10 @@ const MenuCategories = ({ menu, loading, status, category, title }) => {
     setFilteredMenu(filteredItems);
   }, [menu]);
   return (
-    <div className="px-8 lg:px-16">
+    <div className="">
       <h2 className="text-2xl font-bold mb-8 text-center text-gray-800 border-b-2 border-black px-5 w-fit mx-auto">
         {title}
       </h2>
-
       {loading ? (
         <div className="text-center flex justify-center py-12">
           <svg id="svgStyle" viewBox="0 0 50 50">
@@ -24,7 +23,7 @@ const MenuCategories = ({ menu, loading, status, category, title }) => {
           </svg>
         </div>
       ) : (
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 md:mx-0">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 md:mx-0 mb-12">
           {filteredMenu?.map((item) => (
             <div
               key={item?.name}
