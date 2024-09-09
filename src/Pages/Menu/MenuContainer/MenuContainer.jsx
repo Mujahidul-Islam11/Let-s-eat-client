@@ -15,6 +15,7 @@ const MenuContainer = () => {
       />
       <PopularMenu menu={menu} loading={loading} status={"popular"} title={"Popular"}></PopularMenu>
       <PopularMenu menu={menu} loading={loading} category={"Main Course"} title={"Main Course"}></PopularMenu>
+      <PopularMenu menu={menu} loading={loading} category={"Vegan Salad"} title={"Vegan Salad"}></PopularMenu>
     </div>
   );
 };
