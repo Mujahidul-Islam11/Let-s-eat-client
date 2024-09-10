@@ -13,7 +13,7 @@ const ShopBanner = () => {
       }}
     >
       <div className="w-full h-full bg-black bg-opacity-20 text-center flex flex-col justify-center items-center gap-4">
-        <h3 className="text-3xl md:text-5xl font-semibold">Our Menu</h3>
+        <h3 className="text-3xl md:text-5xl font-semibold">Our Shop</h3>
         <div className="flex gap-3">
           <NavLink to={"/"}>
             <h3 className="text-sm md:text-lg hover:text-yellow-300 duration-300">
