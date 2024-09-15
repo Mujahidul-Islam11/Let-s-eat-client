@@ -31,7 +31,7 @@ const OurMenu = () => {
           {filteredMenu?.map((item) => (
             <div
               key={item?.name}
-              className="flex flex-col items-center text-center"
+              className="flex flex-col items-center text-center hover:scale-105 duration-300 cursor-pointer"
             >
               <img
                 className="w-40 h-40 mb-4 rounded-full object-cover"
