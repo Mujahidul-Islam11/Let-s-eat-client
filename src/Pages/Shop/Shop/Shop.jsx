@@ -101,7 +101,7 @@ const Shop = () => {
                 <div className="text-center space-y-2">
                 <div className="flex justify-between px-6 items-center">
                 <p className="text-yellow-500">{item?.rating} ★</p>
-                <h3 className="text-xl">
+                <h3 className="text-2xl">
                 <ion-icon name="heart-outline"></ion-icon>
                 </h3>
                 </div>
