@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import MenuCard from "./MenuCard";
 
 const MenuCategories = ({ menu, loading, status, category, title }) => {
   const [filteredMenu, setFilteredMenu] = useState([]);
@@ -25,22 +26,7 @@ const MenuCategories = ({ menu, loading, status, category, title }) => {
       ) : (
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 md:mx-0 mb-12">
           {filteredMenu?.map((item) => (
-            <div
-              key={item?.name}
-              className="flex flex-col items-center text-center transition-transform transform hover:scale-105 cursor-pointer"
-            >
-              <img
-                className="w-40 h-40 mb-4 rounded-full object-cover"
-                src={item?.img}
-                alt={item?.name}
-              />
-              <div className="text-center space-y-2">
-                <h3 className="text-lg font-semibold">{item?.name}</h3>
-                <p className="text-sm">{item?.desc}</p>
-                <p className="font-bold text-lg">${item?.price}</p>
-                <p className="text-yellow-500">{item?.rating} ★</p>
-              </div>
-            </div>
+            <MenuCard key={item._id} item={item}></MenuCard>
           ))}
         </div>
       )}
