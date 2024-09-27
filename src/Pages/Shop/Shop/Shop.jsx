@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import SectionBanner from "../../Shared/SectionBanner/SectionBanner";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
+import ItemCard from "./ItemCard";
+
 
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -45,7 +47,7 @@ const Shop = () => {
     </>
   );
 
-  // data filtering starts
+  // data filtering
   useEffect(() => {
     if (selectedCategory == "All") {
       setFilteredMenu(menu);
@@ -56,9 +58,8 @@ const Shop = () => {
       setFilteredMenu(filteredData);
     }
   }, [menu, selectedCategory]);
-  // data filtering ends
 
-  console.log(filteredMenu);
+
   return (
     <div>
       <SectionBanner
@@ -75,9 +76,11 @@ const Shop = () => {
             "Delicious meals, fresh ingredients. Browse, pick, and enjoy your favorites!"
           }
         ></SectionTitle>
-        <div className="flex justify-center flex-wrap gap-2 md:gap-4 mb-20 md:mb-28">{categoryBtns}</div>
+        <div className="flex justify-center flex-wrap gap-2 md:gap-4 mb-20 md:mb-28">
+          {categoryBtns}
+        </div>
 
-        {/* menu cards starts*/}
+        {/* menu cards*/}
         <div className="flex justify-center">
           {loading ? (
             <div className="text-center flex justify-center mb-24">
@@ -89,32 +92,12 @@ const Shop = () => {
           ) : (
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-y-24 gap-x-12">
               {filteredMenu?.map((item) => (
-                <div
-                key={item?.name}
-                className="flex flex-col items-center text-center hover:scale-105 duration-300 cursor-pointer py-3 px-4 rounded-md shadow-xl"
-              >
-                <img
-                  className="w-36 h-36 mb-4 rounded-full object-cover -mt-20"
-                  src={item?.img}
-                  alt={item?.name}
-                />
-                <div className="text-center space-y-2">
-                <div className="flex justify-between px-6 items-center">
-                <p className="text-yellow-500">{item?.rating} ★</p>
-                <h3 className="text-2xl">
-                <ion-icon name="heart-outline"></ion-icon>
-                </h3>
-                </div>
-                <h3 className="text-lg font-semibold">{item?.name}</h3>
-                <p className="text-sm">{item?.desc}</p>
-                <p className="font-bold text-lg">${item?.price}</p>
-                </div>
-              </div>
+                <ItemCard item={item} key={item._id}></ItemCard>
               ))}
             </div>
           )}
         </div>
-        {/* menu cards ends*/}
+
       </div>
     </div>
   );

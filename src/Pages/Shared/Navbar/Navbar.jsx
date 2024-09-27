@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = ({ openMenu, setOpenMenu }) => {
   const navLists = (
@@ -110,9 +110,11 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
                 </li>
               </ul>
             </div>
-            <button className="hidden rounded-md bg-yellow-400 hover:bg-yellow-500 transition duration-300 py-2 px-6 text-black">
-              Log In
+           <NavLink to={"/login"}>
+           <button className="bg-yellow-400 font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center">
+              Login
             </button>
+           </NavLink>
           </div>
           {/* nav-3 end*/}
         </nav>
