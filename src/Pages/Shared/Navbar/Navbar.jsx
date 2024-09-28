@@ -34,16 +34,18 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
 
   return (
     <div className="">
-      {/*drawer start - Small device */}
+
+      {/*drawer - Small device */}
       {openMenu && (
         <div className="z-50 w-44 h-40 bg-base-100 absolute top-20 left-3 shadow-md px-6 py-3">
           <ul className="space-y-1">{navLists}</ul>
         </div>
       )}
-      {/*drawer end */}
+
       <div className="bg-white shadow-lg mt-4 mx-2 lg:mx-0">
-        <nav className="border-b w-full flex justify-between items-center px-4 md:px-6 py-2">
-          {/* nav-1 start*/}
+        <nav className="border-b w-full flex justify-between items-center px-2 md:px-4 py-1">
+
+          {/* nav-1*/}
           <div className="flex items-center">
             {/* Small device menu button */}
             <div
@@ -62,23 +64,21 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
             </div>
             <Link to={"/"} className="">
               <img
-                className="w-32 md:w-44 lg:w-56"
+                className="w-32 md:w-40 lg:w-52"
                 src="https://imagizer.imageshack.com/img922/4374/m4qNbj.png"
                 alt="Logo"
               />
             </Link>
           </div>
-          {/* nav-1 end*/}
 
-          {/* nav-2 start*/}
+          {/* nav-2*/}
           <div className="hidden md:flex justify-center flex-grow">
             <ul className="flex space-x-4 md:space-x-6 lg:space-x-8 items-center">
               {navLists}
             </ul>
           </div>
-          {/* nav-2 end*/}
 
-          {/* nav-3 start*/}
+          {/* nav-3*/}
           <div className="flex items-center space-x-0 md:space-x-4">
             <div className="text-lg md:text-2xl border text-red-400 flex justify-center items-center shadow-md cursor-pointer rounded-full p-2 md:p-3">
               <ion-icon name="heart-outline"></ion-icon>
@@ -116,7 +116,7 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
             </button>
            </NavLink>
           </div>
-          {/* nav-3 end*/}
+
         </nav>
       </div>
     </div>
