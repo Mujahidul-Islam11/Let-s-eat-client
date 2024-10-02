@@ -5,26 +5,25 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../provider/AuthProvider";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
   const {signIn} = useContext(AuthContext);
-  console.log(signIn);
+  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+
+  const onSubmit = (data) => console.log(data)
+
+  console.log(watch("email"), watch("pass"))
+
 
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
 
   // Login handler
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const pass = form.pass.value;
-    const captcha = form.captcha.value;
-    console.log(email, pass, captcha);
-  };
+  
 
   // validation handler
   const handleValidation = () => {
@@ -42,13 +41,14 @@ const Login = () => {
       <div className="p-6 rounded-lg max-w-7xl w-full flex justify-center">
         {/* Form */}
         <div className="md:w-1/2 w-full p-6 px-6 md:px-14 flex flex-col justify-center ">
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             {/* Email Input */}
             <div className="mb-4">
               <label className="block text-gray-600 mb-1">Email</label>
               <input
                 type="email"
                 name="email"
+                {...register("email", {required: true})}
                 placeholder="Enter your email"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
@@ -60,6 +60,7 @@ const Login = () => {
               <input
                 type="password"
                 name="pass"
+                {...register("pass", {required: true})}
                 placeholder="Enter your password"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
@@ -105,10 +106,6 @@ const Login = () => {
                   Create a New Account
                 </a>
               </p>
-            </div>
-
-            <div className="text-center mt-4">
-              <p className="text-gray-600">Or log in with</p>
             </div>
           </form>
         </div>
