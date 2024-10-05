@@ -14,7 +14,7 @@ const SignUp = () => {
 
   const onSubmit = (data) => console.log(data);
 
-  console.log(watch("email"), watch("pass"));
+  console.log(watch("name"), watch("email"), watch("pass"));
 
   return (
     <div className="flex items-center justify-center">
@@ -77,6 +77,7 @@ const SignUp = () => {
                 </Link>
               </p>
             </div>
+            
           </form>
         </div>
       </div>
