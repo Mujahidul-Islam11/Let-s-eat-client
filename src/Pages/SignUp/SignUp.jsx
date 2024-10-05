@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { toast } from "sonner";
 
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
@@ -12,9 +13,19 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    createUser(data.email, data.pass)
+    .then(result => {
+        console.log(result.user);
+        toast.success('Successfully created account')
+    })
+    .catch(err =>{
+        console.error(err);
+        toast.error('Oops! Something went wrong')
+    })
+  };
 
-  console.log(watch("name"), watch("email"), watch("pass"));
+  console.log(watch("pass"))
 
   return (
     <div className="flex items-center justify-center">
@@ -52,10 +63,19 @@ const SignUp = () => {
               <input
                 type="password"
                 name="pass"
-                {...register("pass", { required: true })}
+                {...register("pass", {
+                  required: true,
+                  pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{6,}$/,
+                })}
                 placeholder="Create password"
                 className="w-full px-4 py-2 text-black dark:bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
+              {errors.pass?.type === "pattern" && (
+                <h3 className="text-sm text-red-600">
+                  Password must have one uppercase, one lowercase, one number
+                  and a special character
+                </h3>
+              )}
             </div>
 
             {/* Sign Up Button */}
@@ -77,7 +97,6 @@ const SignUp = () => {
                 </Link>
               </p>
             </div>
-            
           </form>
         </div>
       </div>
