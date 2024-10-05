@@ -61,7 +61,7 @@ const Shop = () => {
 
 
   return (
-    <div>
+    <div className="text-black">
       <SectionBanner
         title={"Our Shop"}
         pageName={"Shop"}

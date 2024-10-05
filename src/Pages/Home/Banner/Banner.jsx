@@ -40,7 +40,7 @@ const Banner = () => {
                     {content?.desc}
                   </p>
                   <NavLink to={"/shop"}>
-                  <button className="bg-white px-6 py-3 mt-4 rounded-full font-extrabold">
+                  <button className="bg-white px-6 py-3 mt-4 rounded-full font-extrabold text-black">
                     Order Now
                   </button>
                   </NavLink>

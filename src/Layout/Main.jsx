@@ -18,7 +18,7 @@ const Main = () => {
 // }, []);
 
   return (
-    <div onClick={() => setOpenMenu(false)} className="relative lg:max-w-7xl lg:mx-auto">
+    <div onClick={() => setOpenMenu(false)} className=" relative lg:max-w-7xl lg:mx-auto">
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu}></Navbar>
       <div className="py-3">
       <Outlet></Outlet>

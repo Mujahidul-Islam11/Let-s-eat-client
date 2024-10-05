@@ -27,6 +27,7 @@ const Services = () => {
             "Discover the wide range of services we offer to make your events unforgettable."
           }
         ></SectionTitle>
+        
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 md:px-20">
           {services?.map((service) => (
             <div
@@ -38,16 +39,16 @@ const Services = () => {
                   <ion-icon name={service?.icon}></ion-icon>
                 </h3>
                 <div>
-                  <h3 className="text-lg md:text-xl font-semibold">
+                  <h3 className="text-lg md:text-xl font-semibold text-black">
                     {service?.title}
                   </h3>
                 </div>
               </div>
               <div className="py-3 md:py-4">
-                <p className="text-sm md:text-[16px]">{service?.description}</p>
+                <p className="text-sm md:text-[16px] text-gray-800">{service?.description}</p>
               </div>
               <div className="py-3 md:py-4">
-                <a href="#" className="hover:text-yellow-600 hover:underline">
+                <a href="#" className="hover:text-yellow-600 hover:underline text-black">
                   Learn More
                 </a>
               </div>

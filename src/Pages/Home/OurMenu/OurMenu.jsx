@@ -27,7 +27,7 @@ const OurMenu = () => {
       </svg>
       </div>
       ) : (
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 md:mx-0">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 md:mx-0 text-black">
           {filteredMenu?.map((item) => (
             <div
               key={item?.name}
@@ -49,7 +49,7 @@ const OurMenu = () => {
         </div>
       )}
       <NavLink to={"/menu"}>
-        <button className="bg-yellow-400 font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md mx-auto flex justify-center mt-6">
+        <button className="bg-yellow-400 text-black font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md mx-auto flex justify-center mt-6">
           View More
         </button>
       </NavLink>

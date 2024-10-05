@@ -11,7 +11,7 @@ const AboutUs = () => {
       <div className="relative md:w-[40%] md:h-[88%]  bg-white mx-6 md:p-8 rounded-md flex flex-col justify-center">
         <div className="absolute h-40 md:h-52 w-40 bg-gray-300 top-4 md:top-8 z-5 opacity-30 -left-3 md:-left-1"></div>
         <div className="z-10">
-          <h2 className="text-2xl md:text-4xl font-bold mb-4">About Us</h2>
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 text-black">About Us</h2>
           <p className="text-gray-700 text-sm md:text-lg mb-6">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
@@ -21,7 +21,7 @@ const AboutUs = () => {
             risus. Nulla quis lorem ut libero malesuada feugiat.
           </p>
         </div>
-        <button className="bg-yellow-400 font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center mt-6">
+        <button className="bg-yellow-400 font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center mt-6 text-black">
         Read More
       </button>
       </div>

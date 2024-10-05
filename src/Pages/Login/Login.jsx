@@ -50,7 +50,7 @@ const Login = () => {
                 name="email"
                 {...register("email", {required: true})}
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                className="w-full px-4 py-2 text-black dark:bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
 
@@ -62,7 +62,7 @@ const Login = () => {
                 name="pass"
                 {...register("pass", {required: true})}
                 placeholder="Enter your password"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                className="w-full px-4 py-2 text-black dark:bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
 
@@ -76,12 +76,12 @@ const Login = () => {
                 ref={captchaRef}
                 name="captcha"
                 placeholder="Type the captcha above"
-                className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                className="mt-2 w-full px-4 py-2 text-black dark:bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
               <div className="flex justify-start my-2">
                 <button
                   onClick={handleValidation}
-                  className="py-1 px-4 border text-sm rounded-full border-gray-500 cursor-pointer"
+                  className="py-1 px-4 border text-black text-sm rounded-full border-gray-500 cursor-pointer"
                 >
                   Validate
                 </button>

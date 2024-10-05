@@ -4,7 +4,7 @@ import SectionBanner from "../../Shared/SectionBanner/SectionBanner";
 
 const Menu = () => {
   return (
-    <div>
+    <div className="text-black">
       <SectionBanner
         title={"Our Menu"}
         pageName={"Menu"}

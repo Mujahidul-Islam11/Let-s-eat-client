@@ -33,11 +33,11 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
   );
 
   return (
-    <div className="">
+    <div className="text-black">
 
       {/*drawer - Small device */}
       {openMenu && (
-        <div className="z-50 w-44 h-40 bg-base-100 absolute top-20 left-3 shadow-md px-6 py-3">
+        <div className="z-50 w-40 h-40 absolute top-20 left-3 bg-white shadow-md px-6 py-3 rounded-md">
           <ul className="space-y-1">{navLists}</ul>
         </div>
       )}
@@ -50,7 +50,7 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
             {/* Small device menu button */}
             <div
               onClick={(e_) => e_.stopPropagation()}
-              className="block md:hidden text-2xl md:text-3xl cursor-pointer mt-5"
+              className="block md:hidden text-2xl md:text-3xl cursor-pointer mt-5 text-black"
             >
               {openMenu ? (
                 <button onClick={() => setOpenMenu(false)}>
@@ -98,20 +98,20 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <h3 className="text-sm text-[#000]">
+                  <h3 className="text-sm text-gray-600">
                     Mohammad Mojahidul Islam
                   </h3>
                 </li>
-                <li>
+                <li className="text-black">
                   <a>Logout</a>
                 </li>
               </ul>
             </div>
            <NavLink to={"/login"}>
-           <button className="bg-yellow-400 font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center">
+           <button className="bg-yellow-400 text-black font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center">
               Login
             </button>
            </NavLink>

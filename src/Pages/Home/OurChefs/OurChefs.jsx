@@ -14,11 +14,11 @@ const OurChefs = () => {
         title={"Meet Our Chefs"}
         desc={"Our chefs are the heart of our kitchen."}
       ></SectionTitle>
-      <div className="flex flex-col md:flex-row justify-center items-center gap-24 md:gap-8 py-12 px-4">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-24 md:gap-8 py-12 px-4 text-black">
         {chefs.map((chef) => (
           <div
             key={chef.id}
-            className="bg-white shadow-lg rounded-lg px-3 pb-6 w-fit md:w-1/2 text-center space-y-3 border"
+            className="bg-white shadow-lg rounded-lg px-3 pb-6 w-fit md:w-1/2 text-center space-y-3 border hover:scale-105 duration-300"
           >
             <div className="w-[170px] h-[170px] border-t-2 mx-auto bg-white -mt-20 rounded-full flex items-center">
             <img
