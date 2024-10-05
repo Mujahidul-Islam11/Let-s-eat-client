@@ -6,6 +6,7 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const captchaRef = useRef(null);
@@ -49,7 +50,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 {...register("email", {required: true})}
-                placeholder="Enter your email"
+                placeholder="Your email"
                 className="w-full px-4 py-2 text-black dark:bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
@@ -61,7 +62,7 @@ const Login = () => {
                 type="password"
                 name="pass"
                 {...register("pass", {required: true})}
-                placeholder="Enter your password"
+                placeholder="Your password"
                 className="w-full px-4 py-2 text-black dark:bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
@@ -99,12 +100,12 @@ const Login = () => {
             <div className="text-center mt-6">
               <p className="text-gray-600">
                 New here?{" "}
-                <a
-                  href="#"
+                <Link
+                  to="/signUp"
                   className="text-yellow-500 font-medium hover:underline"
                 >
                   Create a New Account
-                </a>
+                </Link>
               </p>
             </div>
           </form>

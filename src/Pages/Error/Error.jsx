@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Error = () => {
   return (
-    <div className="w-full flex justify-center items-center flex-col">
+    <div className="w-full flex justify-center items-center flex-col text-black bg-white">
       <img
         className="md:w-1/2 md:h-1/2 object-cover"
         src="https://imagizer.imageshack.com/img923/6628/uY8bZ4.png"
