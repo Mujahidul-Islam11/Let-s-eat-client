@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const Navbar = ({ openMenu, setOpenMenu }) => {
+  const { user, logOut } = useContext(AuthContext);
+
   const navLists = (
     <>
       <li className="hover:text-[#F0C333] transition duration-300">
@@ -32,9 +35,12 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
     </>
   );
 
+  const handleLogOut = () => {
+    logOut();
+  };
+
   return (
     <div className="text-black">
-
       {/*drawer - Small device */}
       {openMenu && (
         <div className="z-50 w-40 h-40 absolute top-20 left-3 bg-white shadow-md px-6 py-3 rounded-md">
@@ -44,7 +50,6 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
 
       <div className="bg-white shadow-lg mt-4 mx-2 lg:mx-0">
         <nav className="border-b w-full flex justify-between items-center px-2 md:px-4 py-1">
-
           {/* nav-1*/}
           <div className="flex items-center">
             {/* Small device menu button */}
@@ -83,40 +88,42 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
             <div className="text-lg md:text-2xl border text-red-400 flex justify-center items-center shadow-md cursor-pointer rounded-full p-2 md:p-3">
               <ion-icon name="heart-outline"></ion-icon>
             </div>
-            <div className="dropdown dropdown-end z-50">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-8 md:w-12 rounded-full">
-                  <img
-                    alt="Profile"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  />
+            {user ? (
+              <div className="dropdown dropdown-end z-50">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-8 md:w-12 rounded-full">
+                    <img
+                      alt="Profile"
+                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    />
+                  </div>
                 </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                >
+                  <li>
+                    <h3 className="text-sm text-gray-600">
+                      {user?.displayName}
+                    </h3>
+                  </li>
+                  <li className="text-black">
+                    <button onClick={() => handleLogOut()}>Logout</button>
+                  </li>
+                </ul>
               </div>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
-              >
-                <li>
-                  <h3 className="text-sm text-gray-600">
-                    Mohammad Mojahidul Islam
-                  </h3>
-                </li>
-                <li className="text-black">
-                  <a>Logout</a>
-                </li>
-              </ul>
-            </div>
-           <NavLink to={"/login"}>
-           <button className="bg-yellow-400 text-black font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center">
-              Login
-            </button>
-           </NavLink>
+            ) : (
+              <NavLink to={"/login"}>
+                <button className="bg-yellow-400 text-black font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center">
+                  Login
+                </button>
+              </NavLink>
+            )}
           </div>
-
         </nav>
       </div>
     </div>
