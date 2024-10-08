@@ -6,7 +6,7 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const Login = () => {
@@ -19,13 +19,16 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
     signIn(data.email, data.pass)
     .then((result) => {
       console.log(result.user);
       toast.success("Successfully, logged in")
-      navigate("/")
+      navigate(from)
     })
     .catch((err) =>{
       console.error(err);
