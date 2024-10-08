@@ -10,6 +10,8 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
     logOut();
   };
 
+  console.log(user?.photoURL, user?.displayName)
+
   return (
     <div className="text-black">
       {/*drawer - Small device */}
@@ -67,10 +69,7 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="w-8 md:w-12 rounded-full">
-                    <img
-                      alt="Profile"
-                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                    />
+                    <img src={user?.photoURL} alt="" />
                   </div>
                 </div>
                 <ul

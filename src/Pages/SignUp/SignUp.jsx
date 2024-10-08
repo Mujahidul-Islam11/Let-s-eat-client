@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "sonner";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUser, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -15,17 +16,28 @@ const SignUp = () => {
 
   const onSubmit = (data) => {
     createUser(data.email, data.pass)
-    .then(result => {
-        console.log(result.user);
-        toast.success('Successfully created account')
-    })
-    .catch(err =>{
+      .then((result) => {
+        toast.success("Successfully created account");
+        // update user
+        updateUser(data.name, data.photoURL)
+          .then(() => {
+            logOut()
+            .then(() => {
+              navigate("/login");
+            })
+            .catch((err)=>{
+              console.log(err);
+            })
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      })
+      .catch((err) => {
         console.error(err);
-        toast.error('Oops! Something went wrong')
-    })
+        toast.error("Oops! Something went wrong");
+      });
   };
-
-  console.log(watch("pass"))
 
   return (
     <div className="flex items-center justify-center">
@@ -38,9 +50,19 @@ const SignUp = () => {
               <label className="block text-gray-600 mb-1">Name</label>
               <input
                 type="text"
-                name="name"
                 {...register("name", { required: true })}
                 placeholder="Your name"
+                className="w-full px-4 py-2 text-black dark:bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              />
+            </div>
+
+            {/* Photo Input */}
+            <div className="mb-4">
+              <label className="block text-gray-600 mb-1">Photo Url</label>
+              <input
+                type="text"
+                {...register("photoURL", { required: true })}
+                placeholder="Profile photo url"
                 className="w-full px-4 py-2 text-black dark:bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
@@ -50,7 +72,6 @@ const SignUp = () => {
               <label className="block text-gray-600 mb-1">Email</label>
               <input
                 type="email"
-                name="email"
                 {...register("email", { required: true })}
                 placeholder="Your email"
                 className="w-full px-4 py-2 text-black dark:bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
@@ -62,10 +83,10 @@ const SignUp = () => {
               <label className="block text-gray-600 mb-1">Password</label>
               <input
                 type="password"
-                name="pass"
                 {...register("pass", {
                   required: true,
-                  pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{6,}$/,
+                  pattern:
+                    /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{6,}$/,
                 })}
                 placeholder="Create password"
                 className="w-full px-4 py-2 text-black dark:bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
