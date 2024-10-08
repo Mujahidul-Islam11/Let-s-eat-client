@@ -1,39 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { navLists } from "../../../data/NavData";
 
 const Navbar = ({ openMenu, setOpenMenu }) => {
-  const { user, logOut } = useContext(AuthContext);
-
-  const navLists = (
-    <>
-      <li className="hover:text-[#F0C333] transition duration-300">
-        <Link to="/" className="text-[#000] lg:text-[16px]">
-          Home
-        </Link>
-      </li>
-      <li className="hover:text-[#F0C333] transition duration-300">
-        <Link to="/contact" className="text-[#000] lg:text-[16px]">
-          Contact Us
-        </Link>
-      </li>
-      <li className="hover:text-[#F0C333] transition duration-300">
-        <Link to="/menu" className="text-[#000] lg:text-[16px]">
-          Our Menu
-        </Link>
-      </li>
-      <li className="hover:text-[#F0C333] transition duration-300">
-        <Link to="/shop" className="text-[#000] lg:text-[16px]">
-          Our Shop
-        </Link>
-      </li>
-      <li className="hover:text-[#F0C333] transition duration-300">
-        <Link to="/dashboard" className="text-[#000] lg:text-[16px]">
-          Dashboard
-        </Link>
-      </li>
-    </>
-  );
+  const { user, logOut } = useContext(AuthContext); 
 
   const handleLogOut = () => {
     logOut();
