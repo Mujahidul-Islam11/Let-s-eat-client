@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "sonner";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
 
 const ItemCard = ({ item }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
   const handleAddToList = (food) => {
     if (user && user.email) {
@@ -19,8 +21,8 @@ const ItemCard = ({ item }) => {
       };
 
       // send data to database
-      axios
-        .post("http://localhost:5000/favorites", favItem)
+      axiosSecure
+        .post("/favorites", favItem)
         .then((res) => {
           if (res.data.insertedId) {
             toast.success(`${item.name} added to the favorites`);
