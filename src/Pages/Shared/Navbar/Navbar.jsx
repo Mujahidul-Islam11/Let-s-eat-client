@@ -58,8 +58,9 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
 
           {/* nav-3*/}
           <div className="flex items-center space-x-0 md:space-x-4">
-            <div className="text-lg md:text-2xl border text-red-400 flex justify-center items-center shadow-md cursor-pointer rounded-full p-2 md:p-3">
+            <div className="relative text-lg md:text-2xl border text-red-400 flex justify-center items-center shadow-md cursor-pointer rounded-full p-2 md:p-3">
               <ion-icon name="heart-outline"></ion-icon>
+              <span className="absolute -top-1 right-0 h-[14px] w-[14px] rounded-full bg-red-400"></span>
             </div>
             {user ? (
               <div className="dropdown dropdown-end z-50">

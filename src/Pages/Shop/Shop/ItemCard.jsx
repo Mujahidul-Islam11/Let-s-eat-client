@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const ItemCard = ({ item }) => {
+  const {user} = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleAddToList = (favItem) => {
+    if(user && user.email){
+      // send fav items to db
+    }else{
+      navigate("/login")
+    }
+  };
   return (
     <div
       key={item?.name}
@@ -14,9 +26,9 @@ const ItemCard = ({ item }) => {
       <div className="text-center space-y-2">
         <div className="flex justify-between px-6 items-center">
           <p className="text-yellow-500">{item?.rating} ★</p>
-          <h3 className="text-2xl">
+          <button onClick={()=>handleAddToList(item)} className="text-3xl">
             <ion-icon name="heart-outline"></ion-icon>
-          </h3>
+          </button>
         </div>
         <h3 className="text-lg font-semibold">{item?.name}</h3>
         <p className="text-sm">{item?.desc}</p>
