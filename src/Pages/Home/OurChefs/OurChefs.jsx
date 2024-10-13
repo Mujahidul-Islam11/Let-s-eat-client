@@ -15,7 +15,7 @@ const OurChefs = () => {
         desc={"Our chefs are the heart of our kitchen."}
       ></SectionTitle>
       <div className="flex flex-col md:flex-row justify-center items-center gap-24 md:gap-8 py-12 px-4 text-black">
-        {chefs.map((chef) => (
+        {chefs?.map((chef) => (
           <div
             key={chef.id}
             className="bg-white shadow-lg rounded-lg px-3 pb-6 w-fit md:w-1/2 text-center space-y-3 border hover:scale-105 duration-300"
