@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import SectionBanner from "../../Shared/SectionBanner/SectionBanner";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
-import ItemCard from "./ItemCard";
 import useFavorites from "../../../hooks/useFavorites";
+import ItemCard from "../ShopCards/ItemCard";
 
 
 const Shop = () => {

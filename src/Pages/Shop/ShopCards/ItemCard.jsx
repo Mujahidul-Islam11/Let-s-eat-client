@@ -45,7 +45,7 @@ const ItemCard = ({ item, refetch, favItems}) => {
   return (
     <div
       key={item?.name}
-      className="flex flex-col items-center text-center cursor-pointer py-3 px-4 rounded-md shadow-xl"
+      className="flex flex-col items-center text-center py-3 px-4 rounded-md shadow-lg border"
     >
       <img
         className="w-36 h-36 mb-4 rounded-full object-cover -mt-20"
