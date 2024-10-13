@@ -3,12 +3,15 @@ import SectionBanner from "../../Shared/SectionBanner/SectionBanner";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
 import ItemCard from "./ItemCard";
+import useFavorites from "../../../hooks/useFavorites";
 
 
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredMenu, setFilteredMenu] = useState([]);
   const [menu, loading] = useMenu();
+  const [favItems, refetch] = useFavorites();
+  
 
   const categoryBtns = (
     <>
@@ -92,7 +95,7 @@ const Shop = () => {
           ) : (
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-y-24 gap-x-12">
               {filteredMenu?.map((item) => (
-                <ItemCard item={item} key={item._id}></ItemCard>
+                <ItemCard item={item} key={item._id} refetch={refetch} favItems={favItems}></ItemCard>
               ))}
             </div>
           )}
