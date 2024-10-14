@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="h-screen w-64 bg-white shadow-lg flex flex-col justify-between">
+    <div className="h-screen w-64 bg-white border-r flex flex-col justify-between">
       <div>
       <ul className="py-6 px-4">
         <Link>
