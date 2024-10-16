@@ -3,7 +3,7 @@ import React from "react";
 const Breadcrumbs = ({ routeName, pageTitle }) => {
   return (
     <section className="space-y-12 mb-10">
-      <h3 className="text-sm">
+      <h3 className="text-xs">
         Dashboard <ion-icon name="chevron-forward-outline"></ion-icon>{" "}
         <span className="text-yellow-500">{routeName}</span>
       </h3>
