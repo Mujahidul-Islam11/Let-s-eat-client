@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import { NavLink } from "react-router-dom";
 import useMenu from "../../../hooks/useMenu";
+import SectionTitle from "../../../UI/SectionTitle/SectionTitle";
 
 const OurMenu = () => {
   const [filteredMenu, setFilteredMenu] = useState([]);
@@ -18,7 +18,7 @@ const OurMenu = () => {
         <SectionTitle
           title={"Our Menu"}
           desc={"Explore our delicious offerings."}
-        ></SectionTitle>
+        />
       </div>
       {loading ? (
         <div className="text-center flex justify-center py-12">

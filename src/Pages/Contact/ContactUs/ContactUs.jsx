@@ -1,7 +1,7 @@
 import React from 'react';
 import ContactInfo from '../ContactInfo/ContactInfo';
 import Location from '../Location/Location';
-import SectionBanner from '../../Shared/SectionBanner/SectionBanner';
+import SectionBanner from '../../../UI/SectionBanner/SectionBanner';
 
 const ContactUs = () => {
     return (

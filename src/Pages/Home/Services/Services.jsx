@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
+import SectionTitle from "../../../UI/SectionTitle/SectionTitle";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -26,7 +26,7 @@ const Services = () => {
           desc={
             "Discover the wide range of services we offer to make your events unforgettable."
           }
-        ></SectionTitle>
+        />
         
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 md:px-20">
           {services?.map((service) => (

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import SectionBanner from "../../Shared/SectionBanner/SectionBanner";
-import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
 import useFavorites from "../../../hooks/useFavorites";
 import ItemCard from "../ShopCards/ItemCard";
+import SectionBanner from "../../../UI/SectionBanner/SectionBanner";
+import SectionTitle from "../../../UI/SectionTitle/SectionTitle";
 
 
 const Shop = () => {
@@ -71,14 +71,14 @@ const Shop = () => {
         url={
           "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         }
-      ></SectionBanner>
+      />
       <div className="p-6 md:p-10 my-12">
         <SectionTitle
           title={" Explore Our Menu 🍴"}
           desc={
             "Delicious meals, fresh ingredients. Browse, pick, and enjoy your favorites!"
           }
-        ></SectionTitle>
+        />
         <div className="flex justify-center flex-wrap gap-2 md:gap-4 mb-20 md:mb-28">
           {categoryBtns}
         </div>

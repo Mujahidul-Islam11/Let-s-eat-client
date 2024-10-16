@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
+import SectionTitle from "../../../UI/SectionTitle/SectionTitle";
 
 const OurChefs = () => {
   const [chefs, setChefs] = useState([]);
@@ -13,7 +13,7 @@ const OurChefs = () => {
       <SectionTitle
         title={"Meet Our Chefs"}
         desc={"Our chefs are the heart of our kitchen."}
-      ></SectionTitle>
+      />
       <div className="flex flex-col md:flex-row justify-center items-center gap-24 md:gap-8 py-12 px-4 text-black">
         {chefs?.map((chef) => (
           <div
