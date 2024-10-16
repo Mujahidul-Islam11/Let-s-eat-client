@@ -1,14 +1,20 @@
-import React from 'react';
-import Sidebar from '../SideBar/SideBar';
-import DashNavbar from '../DashNavbar/DashNavbar';
+import React, { useState } from "react";
+import Sidebar from "../SideBar/SideBar";
+import DashNavbar from "../DashNavbar/DashNavbar";
 
 const Dashboard = () => {
-    return (
-        <div>
-            <DashNavbar></DashNavbar>
-            <Sidebar></Sidebar>
-        </div>
-    );
+    const [drawerOpen, setDrawerOpen] = useState(false);
+  return (
+    <div onClick={()=> setDrawerOpen(false)}>
+      <DashNavbar setDrawerOpen={setDrawerOpen} drawerOpen={drawerOpen}></DashNavbar>
+      <div className="hidden md:flex">
+      <Sidebar></Sidebar>
+      </div>
+      <div className="flex md:hidden">
+      {drawerOpen && <Sidebar></Sidebar>}
+      </div>
+    </div>
+  );
 };
 
 export default Dashboard;

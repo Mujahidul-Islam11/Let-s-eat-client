@@ -2,13 +2,19 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 
-const DashNavbar = () => {
-    const {user} = useContext(AuthContext);
+const DashNavbar = ({setDrawerOpen, drawerOpen}) => {
+  const { user } = useContext(AuthContext);
 
   return (
     <nav className="bg-white px-6 flex justify-between items-center border-b">
       {/* Logo */}
-      <div className="flex items-center">
+      <div onClick={(e)=> e.stopPropagation()} className="flex items-center gap-2">
+        <span
+          onClick={() => setDrawerOpen(!drawerOpen)}
+          className="text-2xl flex md:hidden mt-3"
+        >
+          <ion-icon name="menu-outline"></ion-icon>
+        </span>
         <Link to={"/"} className="">
           <img
             className="w-32 md:w-40 lg:w-52"
