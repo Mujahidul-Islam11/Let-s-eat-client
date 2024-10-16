@@ -5,7 +5,7 @@ import DashNavbar from "../DashNavbar/DashNavbar";
 const Dashboard = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
   return (
-    <div onClick={()=> setDrawerOpen(false)}>
+    <div className="bg-white text-gray-800" onClick={()=> setDrawerOpen(false)}>
       <DashNavbar setDrawerOpen={setDrawerOpen} drawerOpen={drawerOpen}></DashNavbar>
       <div className="hidden md:flex">
       <Sidebar></Sidebar>

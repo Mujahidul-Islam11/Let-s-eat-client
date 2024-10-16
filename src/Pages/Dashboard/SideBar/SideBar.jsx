@@ -1,6 +1,19 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
+import { toast } from "sonner";
+import auth from "../../../firebase.config";
 
 const Sidebar = () => {
+  const {logOut} = useContext(AuthContext);
+  
+  const handleLogout = () =>{
+    logOut(auth)
+    .then(result=>{
+      toast("Successfully logged out!")
+    })
+  }
+
   return (
     <div className="h-screen w-52 md:w-64 bg-white border-r flex flex-col justify-between relative">
       <div>
@@ -58,7 +71,7 @@ const Sidebar = () => {
           </li>
         </Link>
         <Link>
-          <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
+          <li onClick={()=> handleLogout()} className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
             <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
               <ion-icon name="log-out-outline"></ion-icon>
             </span>
