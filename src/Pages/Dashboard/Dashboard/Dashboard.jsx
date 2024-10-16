@@ -10,7 +10,7 @@ const Dashboard = () => {
       <div className="hidden md:flex">
       <Sidebar></Sidebar>
       </div>
-      <div className="flex md:hidden">
+      <div className="flex md:hidden duration-300">
       {drawerOpen && <Sidebar></Sidebar>}
       </div>
     </div>
