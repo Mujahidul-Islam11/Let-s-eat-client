@@ -30,13 +30,13 @@ const DashNavbar = ({ setDrawerOpen, drawerOpen }) => {
       {/* User Section */}
       <div className="flex items-center gap-4">
         <div className="hidden md:flex flex-col items-end">
-          <span className="text-gray-800 font-medium">{user?.displayName}</span>
-          <span className="text-sm text-gray-500">Admin</span>
+          <span className="text-lg text-gray-900 font-medium">{user?.displayName}</span>
+          <span className="text-sm text-gray-500">(Admin)</span>
         </div>
         <img
           src={user?.photoURL}
           alt="User Profile"
-          className="w-10 h-10 rounded-full object-cover hidden md:flex"
+          className="w-12 h-12 rounded-full object-cover hidden md:flex"
         />
         <div className="dropdown dropdown-end z-50 visible md:hidden">
           <div

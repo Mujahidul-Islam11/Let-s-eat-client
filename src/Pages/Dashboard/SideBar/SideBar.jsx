@@ -15,8 +15,8 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="h-screen w-52 md:w-64 bg-white border-r flex flex-col justify-between relative">
-      <div>
+    <div className="h-screen w-52 md:w-60 bg-white border-r border-b flex flex-col justify-between relative shadow-lg md:shadow-none rounded-lg md:rounded-none">
+      <section>
       <ul className="py-4 md:py-6 px-2 md:px-4">
         <Link>
           <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
@@ -34,7 +34,7 @@ const Sidebar = () => {
             <span className="text-gray-700">Reservation</span>
           </li>
         </Link>
-        <Link>
+        <Link to={"/dashboard/favorites"}>
           <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
             <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
               <ion-icon name="heart-outline"></ion-icon>
@@ -59,8 +59,8 @@ const Sidebar = () => {
           </li>
         </Link>
       </ul>
-      </div>
-      <div>
+      </section>
+      <section>
       <ul className="py-4 md:py-6 px-2 md:px-4">
         <Link>
           <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
@@ -79,7 +79,7 @@ const Sidebar = () => {
           </li>
         </Link>
       </ul>
-      </div>
+      </section>
     </div>
   );
 };

@@ -9,40 +9,41 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
+import MyFavorites from "../Pages/Dashboard/MyFavorites/MyFavorites";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement: <Error></Error>,
+    errorElement: <Error/>,
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home/>,
       },
       {
         path: "/contact",
-        element: <ContactUs></ContactUs>,
+        element: <ContactUs/>,
       },
       {
         path: "/menu",
-        element: <Menu></Menu>,
+        element: <Menu/>,
       },
       {
         path: "/shop",
         element: (
           <PrivateRoute>
-            <Shop></Shop>
+            <Shop/>
           </PrivateRoute>
         ),
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: <Login/>,
       },
       {
         path: "/signUp",
-        element: <SignUp></SignUp>,
+        element: <SignUp/>,
       },
     ],
   },
@@ -50,13 +51,13 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: (
       <PrivateRoute>
-        <Dashboard></Dashboard>
+        <Dashboard/>
       </PrivateRoute>
     ),
     children: [
       {
         path: "favorites",
-        element: <div>favorites</div>
+        element: <MyFavorites/>
       }
     ]
   },
