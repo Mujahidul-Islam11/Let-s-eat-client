@@ -1,8 +1,11 @@
+import { Toaster, toast } from "sonner";
 import Breadcrumbs from "../../../UI/Breadcrumbs/Breadcrumbs";
 import useFavorites from "../../../hooks/useFavorites";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyFavorites = () => {
   const [favItems, refetch] = useFavorites();
+  const axiosSecure = useAxiosSecure();
   const tableTitles = (
     <>
       <th className="px-6 py-4 text-center font-semibold text-gray-700 text-sm md:text-lg">
@@ -20,10 +23,41 @@ const MyFavorites = () => {
     </>
   );
 
-  const totalPrice = favItems?.reduce((sum, item)=> sum + item?.price, 0)
+  const totalPrice = favItems?.reduce((sum, item)=> sum + item?.price, 0);
+
+  const handleDelete = (itemData) =>{
+    toast.custom((t) => (
+      <div className="shadow-xl p-4 rounded-md bg-white mb-8 space-y-4">
+        <span className="flex justify-center border text-red-300 border-red-300 w-fit mx-auto text-3xl rounded-full p-3"><ion-icon name="alert-outline"></ion-icon></span>
+        <h1 className="text-center">Are you sure you want to delete {itemData?.name}??</h1>
+         <button onClick={() => {
+          toast.dismiss(t); 
+          deleteItem(); 
+        }} className="bg-red-500 font-extralight py-2 px-5 rounded-full hover:bg-red-600 transition-all size-fit shadow-md flex justify-center mx-auto text-white">Yes</button>
+      </div>
+    ));
+
+    const deleteItem = () =>{
+      axiosSecure.delete(`/favorites/${itemData?._id}`)
+      .then(result =>{
+        if(result.data.deletedCount > 0){
+          toast.success(`Successfully deleted ${itemData?.name} from favorites!`,{
+            duration: 3000
+          })
+          refetch();
+        }
+      })
+      .catch(err =>{
+        toast.error(`Oops! something went wrong, please try again.`,{
+          duration: 3000
+        })
+      })
+    }
+  }
 
   return (
     <div className="md:mx-12 w-full">
+      <Toaster richColors/>
       <Breadcrumbs routeName={"Favorites"} pageTitle={"My Favorites"} />
 
       <section className="flex justify-between items-center w-3/4 mx-auto mb-4">
@@ -56,7 +90,7 @@ const MyFavorites = () => {
                   ${favItem?.price}
                 </td>
                 <td className="px-6 py-4">
-                  <button className="text-xl text-red-500 text-center mx-auto flex justify-center">
+                  <button onClick={()=> handleDelete(favItem)} className="text-xl text-red-500 text-center mx-auto flex justify-center">
                     x
                   </button>
                 </td>

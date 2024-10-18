@@ -20,7 +20,7 @@ const DashNavbar = ({ setDrawerOpen, drawerOpen }) => {
         </span>
         <Link to={"/"} className="">
           <img
-            className="w-32 md:w-40 lg:w-52"
+            className="w-32 md:w-40 lg:w-48"
             src="https://imagizer.imageshack.com/img922/4374/m4qNbj.png"
             alt="Logo"
           />
