@@ -3,31 +3,41 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "sonner";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
-  const { createUser, updateUser, logOut } = useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
+  const axiosPublic = useAxiosPublic();
+
   const onSubmit = (data) => {
     createUser(data.email, data.pass)
-      .then((result) => {
-        toast.success("Successfully created account");
-        // update user
+      .then(() => {
+        // update user name and photoUrl
         updateUser(data.name, data.photoURL)
           .then(() => {
-            logOut()
-            .then(() => {
-              navigate("/login");
-            })
-            .catch((err)=>{
-              console.log(err);
-            })
+            // insert user info to database
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+            };
+            axiosPublic
+              .post("/users", userInfo)
+              .then((result) => {
+                if (result.data.insertedId) {
+                  toast.success("Successfully created account");
+                  navigate("/")
+                }
+              })
+              .catch((err) => {
+                console.error(err);
+              });
           })
           .catch((err) => {
             console.error(err);

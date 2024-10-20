@@ -31,7 +31,7 @@ const OurChefs = () => {
               {chef.name}
             </h3>
             <p className="text-gray-600">{chef.info}</p>
-            <div class="flex justify-center gap-4">
+            <div className="flex justify-center gap-4">
               <a className="text-2xl border border-yellow-300 hover:bg-yellow-300 hover:text-white transition-all duration-300 p-2 flex items-center rounded-full" href="#" target="_blank">
                 <ion-icon name="logo-facebook"></ion-icon>
               </a>

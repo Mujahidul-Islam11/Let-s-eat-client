@@ -10,7 +10,7 @@ const OurMenu = () => {
   useEffect(() => {
     const popularMenu = menu?.filter((item) => item.status === "popular");
     setFilteredMenu(popularMenu);
-  }, [menu]);
+  }, [menu, setFilteredMenu]);
 
   return (
     <section className="my-12 py-10">
