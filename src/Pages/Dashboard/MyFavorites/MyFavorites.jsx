@@ -80,7 +80,6 @@ const MyFavorites = () => {
 
   return (
     <div className="md:mx-12 w-full">
-      <Toaster richColors />
       <Breadcrumbs routeName={"Favorites"} pageTitle={"My Favorites"} />
 
       <section className="flex justify-between items-center w-full md:w-3/4 mx-auto mb-4 gap-3">

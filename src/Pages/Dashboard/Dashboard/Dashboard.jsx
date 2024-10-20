@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "../SideBar/SideBar";
 import DashNavbar from "../DashNavbar/DashNavbar";
 import { Outlet } from "react-router-dom";
+import { Toaster } from "sonner";
 
 const Dashboard = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -11,6 +12,7 @@ const Dashboard = () => {
       className="bg-white text-gray-800 relative"
       onClick={() => setDrawerOpen(false)}
     >
+      <Toaster richColors />
       <DashNavbar setDrawerOpen={setDrawerOpen} drawerOpen={drawerOpen} />
 
       {/* Drawer, Outlet container */}
