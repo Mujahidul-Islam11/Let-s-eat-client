@@ -10,6 +10,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import MyFavorites from "../Pages/Dashboard/MyFavorites/MyFavorites";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 export const router = createBrowserRouter([
   {
@@ -58,7 +59,11 @@ export const router = createBrowserRouter([
       {
         path: "favorites",
         element: <MyFavorites/>
-      }
+      },
+      {
+        path: "users",
+        element: <AllUsers/>
+      },
     ]
   },
 ]);

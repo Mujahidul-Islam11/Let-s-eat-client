@@ -9,15 +9,58 @@ const Sidebar = () => {
   
   const handleLogout = () =>{
     logOut(auth)
-    .then(result=>{
+    .then(()=>{
       toast("Successfully logged out!")
     })
   }
 
+  const isAdmin = true;
+
   return (
-    <div className="h-full w-52 md:w-60 bg-white border-r border-b flex flex-col justify-between relative shadow-lg md:shadow-none rounded-lg md:rounded-none">
+    <div className="h-full w-52 md:w-72 bg-white border-r border-b flex flex-col justify-between relative shadow-lg md:shadow-none rounded-lg md:rounded-none">
       <section>
-      <ul className="py-4 md:py-6 px-2 md:px-4">
+      {isAdmin? <ul className="py-4 md:py-6 px-2 md:px-4">
+        <Link>
+          <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
+            <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
+              <ion-icon name="grid-outline"></ion-icon>
+            </span>
+            <span className="text-gray-700">Dashboard</span>
+          </li>
+        </Link>
+        <Link>
+          <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
+            <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
+              <ion-icon name="fast-food-outline"></ion-icon>
+            </span>
+            <span className="text-gray-700">Add Items</span>
+          </li>
+        </Link>
+        <Link to={"/dashboard"}>
+          <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
+            <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
+            <ion-icon name="list-outline"></ion-icon>
+            </span>
+            <span className="text-gray-700">Manage Items</span>
+          </li>
+        </Link>
+        <Link>
+          <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
+            <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
+            <ion-icon name="clipboard-outline"></ion-icon>
+            </span>
+            <span className="text-gray-700">Manage Bookings</span>
+          </li>
+        </Link>
+        <Link to={"/dashboard/users"}>
+          <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
+            <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span className="text-gray-700">All Users</span>
+          </li>
+        </Link>
+      </ul>: <ul className="py-4 md:py-6 px-2 md:px-4">
         <Link>
           <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
             <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
@@ -58,7 +101,7 @@ const Sidebar = () => {
             <span className="text-gray-700">My Bookings</span>
           </li>
         </Link>
-      </ul>
+      </ul>}
       </section>
       <section>
       <ul className="py-4 md:py-6 px-2 md:px-4">
