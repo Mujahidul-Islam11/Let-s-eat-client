@@ -1,4 +1,4 @@
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 import Breadcrumbs from "../../../UI/Breadcrumbs/Breadcrumbs";
 import useFavorites from "../../../hooks/useFavorites";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -116,7 +116,7 @@ const MyFavorites = () => {
                     onClick={() => handleDelete(favItem)}
                     className="text-xl text-red-500 text-center mx-auto flex justify-center"
                   >
-                    x
+                    <ion-icon name="trash-outline"></ion-icon>
                   </button>
                 </td>
               </tr>
