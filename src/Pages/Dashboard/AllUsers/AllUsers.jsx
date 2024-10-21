@@ -3,7 +3,6 @@ import Breadcrumbs from "../../../UI/Breadcrumbs/Breadcrumbs";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { toast } from "sonner";
-import useUser from "../../../hooks/useUser";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -24,7 +23,14 @@ const AllUsers = () => {
       </th>
     </>
   );
-  const [users, refetch] = useUser();
+
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/users");
+      return res.data;
+    },
+  });
 
   // api request handlers
   const handleRoleUpdate = (user) => {
@@ -152,7 +158,7 @@ const AllUsers = () => {
                 </td>
                 <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-center text-sm">
                   {user?.role === "Admin" ? (
-                    <span className="bg-gray-200 px-2 py-1 rounded-full border border-gray-400 cursor-pointer">
+                    <span className="bg-gray-200 px-2 py-1 rounded-full border border-gray-400">
                       {user?.role}
                     </span>
                   ) : (
