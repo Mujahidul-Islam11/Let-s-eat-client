@@ -162,7 +162,7 @@ const AllUsers = () => {
                       {user?.role}
                     </span>
                   ) : (
-                    <div className="group relative mx-auto my-14 flex h-10 w-max cursor-pointer justify-center">
+                    <div className="group relative mx-auto flex w-max cursor-pointer justify-center">
                       {/* Hover button */}
 
                       <span
@@ -172,8 +172,8 @@ const AllUsers = () => {
                         <ion-icon name="person-outline"></ion-icon>
                       </span>
                       {/* Hover Text */}
-                      <div className="absolute -top-8 cursor-pointer whitespace-nowrap opacity-0 duration-300 hover:hidden group-hover:-top-16 group-hover:opacity-100  ">
-                        <p className="h-fit rounded-md bg-white px-3 py-2 shadow-xl">Make Admin</p>
+                      <div className="absolute -top-4 cursor-pointer whitespace-nowrap opacity-0 duration-300 hover:hidden group-hover:-top-16 group-hover:opacity-100  ">
+                        <p className="h-fit rounded-md bg-white px-3 py-2 shadow-xl text-sm">Make Admin</p>
                         <span className="absolute -bottom-2 left-[50%] h-0 w-0 -translate-x-1/2 rotate-[135deg] border-b-[20px] border-r-[20px] border-b-transparent border-r-white shadow-b-md"></span>
                       </div>
                     </div>

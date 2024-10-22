@@ -89,7 +89,7 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
               </div>
             ) : (
               <NavLink to={"/login"}>
-                <button className="bg-yellow-400 text-black font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center">
+                <button className="text-sm md:text-lg ml-2 md:ml-0 bg-yellow-400 text-black font-extralight py-2 px-4 md:px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center">
                   Login
                 </button>
               </NavLink>
