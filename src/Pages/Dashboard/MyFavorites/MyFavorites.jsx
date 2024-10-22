@@ -32,7 +32,7 @@ const MyFavorites = () => {
           <ion-icon name="alert-outline"></ion-icon>
         </span>
         <h1 className="text-center">
-          Are you sure you want to delete {itemData?.name}??
+          Are you sure you want to remove {itemData?.name} from favorites??
         </h1>
         <div className="flex justify-center gap-12">
         <button

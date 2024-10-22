@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Breadcrumbs from "../../../UI/Breadcrumbs/Breadcrumbs";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -66,7 +66,7 @@ const AllUsers = () => {
 
     const updateRole = () => {
       axiosSecure
-        .patch(`/users/${user?._id}`)
+        .patch(`/users/admin/${user?._id}`)
         .then((result) => {
           if (result.data.modifiedCount > 0) {
             toast.success(
@@ -119,7 +119,7 @@ const AllUsers = () => {
 
     const deleteUser = () => {
       axiosSecure
-        .delete(`/users/${user?._id}`)
+        .delete(`/users/admin/${user?._id}`)
         .then((result) => {
           if (result.data.deletedCount > 0) {
             toast.success(`Successfully deleted ${user?.name}`, {
@@ -162,21 +162,13 @@ const AllUsers = () => {
                       {user?.role}
                     </span>
                   ) : (
-                    <div className="group relative mx-auto flex w-max cursor-pointer justify-center">
-                      {/* Hover button */}
-
-                      <span
+                    
+                    <span
                         onClick={() => handleRoleUpdate(user)}
                         className="text-xl bg-yellow-400 hover:bg-yellow-500 cursor-pointer w-fit text-white p-2 rounded-full text-center mx-auto flex justify-center duration-300"
                       >
                         <ion-icon name="person-outline"></ion-icon>
                       </span>
-                      {/* Hover Text */}
-                      <div className="absolute -top-4 cursor-pointer whitespace-nowrap opacity-0 duration-300 hover:hidden group-hover:-top-16 group-hover:opacity-100  ">
-                        <p className="h-fit rounded-md bg-white px-3 py-2 shadow-xl text-sm">Make Admin</p>
-                        <span className="absolute -bottom-2 left-[50%] h-0 w-0 -translate-x-1/2 rotate-[135deg] border-b-[20px] border-r-[20px] border-b-transparent border-r-white shadow-b-md"></span>
-                      </div>
-                    </div>
                   )}
                 </td>
                 <td className="px-3 md:px-6 py-2 md:py-4">

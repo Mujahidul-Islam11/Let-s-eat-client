@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { toast } from "sonner";
 import auth from "../../../firebase.config";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Sidebar = () => {
   const {logOut} = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
   
   const handleLogout = () =>{
     logOut(auth)
@@ -14,7 +16,7 @@ const Sidebar = () => {
     })
   }
 
-  const isAdmin = true;
+  console.log(isAdmin);
 
   return (
     <div className="h-full w-52 md:w-72 bg-white border-r border-b flex flex-col justify-between relative shadow-lg md:shadow-none rounded-lg md:rounded-none">
