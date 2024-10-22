@@ -162,12 +162,21 @@ const AllUsers = () => {
                       {user?.role}
                     </span>
                   ) : (
-                    <span
+                    <div className="group relative mx-auto my-14 flex h-10 w-max cursor-pointer justify-center">
+                      {/* Hover button */}
+
+                      <span
                         onClick={() => handleRoleUpdate(user)}
                         className="text-xl bg-yellow-400 hover:bg-yellow-500 cursor-pointer w-fit text-white p-2 rounded-full text-center mx-auto flex justify-center duration-300"
                       >
                         <ion-icon name="person-outline"></ion-icon>
                       </span>
+                      {/* Hover Text */}
+                      <div className="absolute -top-8 cursor-pointer whitespace-nowrap opacity-0 duration-300 hover:hidden group-hover:-top-16 group-hover:opacity-100  ">
+                        <p className="h-fit rounded-md bg-white px-3 py-2 shadow-xl">Make Admin</p>
+                        <span className="absolute -bottom-2 left-[50%] h-0 w-0 -translate-x-1/2 rotate-[135deg] border-b-[20px] border-r-[20px] border-b-transparent border-r-white shadow-b-md"></span>
+                      </div>
+                    </div>
                   )}
                 </td>
                 <td className="px-3 md:px-6 py-2 md:py-4">
