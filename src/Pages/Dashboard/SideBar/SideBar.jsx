@@ -16,7 +16,6 @@ const Sidebar = () => {
     })
   }
 
-  console.log(isAdmin);
 
   return (
     <div className="h-full w-52 md:w-72 bg-white border-r border-b flex flex-col justify-between relative shadow-lg md:shadow-none rounded-lg md:rounded-none">
@@ -30,7 +29,7 @@ const Sidebar = () => {
             <span className="text-gray-700">Dashboard</span>
           </li>
         </Link>
-        <Link>
+        <Link to={"/dashboard/addItems"}>
           <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
             <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
               <ion-icon name="fast-food-outline"></ion-icon>
