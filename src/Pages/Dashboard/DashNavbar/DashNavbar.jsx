@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
 
 const DashNavbar = ({ setDrawerOpen, drawerOpen }) => {
   const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
 
   return (
     <nav className="bg-white px-6 flex justify-between items-center border-b">
@@ -31,7 +33,7 @@ const DashNavbar = ({ setDrawerOpen, drawerOpen }) => {
       <div className="flex items-center gap-4">
         <div className="hidden md:flex flex-col items-end">
           <span className="text-lg text-gray-900 font-medium">{user?.displayName}</span>
-          <span className="text-sm text-gray-500">(Admin)</span>
+          <span className="text-sm text-gray-500">{isAdmin && "(Admin)"}</span>
         </div>
         <img
           src={user?.photoURL}

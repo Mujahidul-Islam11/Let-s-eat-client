@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import MyFavorites from "../Pages/Dashboard/MyFavorites/MyFavorites";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -56,13 +57,16 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      // user routes
       {
         path: "favorites",
         element: <MyFavorites/>
       },
+
+      // admin routes
       {
         path: "users",
-        element: <AllUsers/>
+        element: <AdminRoute><AllUsers/></AdminRoute>
       },
     ]
   },
