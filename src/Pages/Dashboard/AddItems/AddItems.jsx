@@ -1,34 +1,51 @@
 import React, { useState } from 'react';
 import Breadcrumbs from '../../../UI/Breadcrumbs/Breadcrumbs';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 const AddItems = () => {
-    const [category, setCategory] = useState('');
     const [file, setFile] = useState(null);
+    const hostingKey = import.meta.env.VITE_IMG_HOSTING_KEY;
+    const hostingAPI = `https://api.imgbb.com/1/upload?key=${hostingKey}`
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission logic here
-        console.log({
-            recipeName,
-            recipeDetails,
-            category,
-            price,
-            file,
-        });
+    const onSubmit = async (data) => {
+
+        // host img on imgbb
+        const imageFile = { image: data.img[0] }
+        const imageRes = await axios.post(hostingAPI, imageFile, {
+            headers: {
+                "content-type": "multipart/form-data",
+            },
+        })
+        const imgURL = imageRes.data.data.display_url;
+        const itemData = {
+            name: data.name,
+            img: imgURL,
+            category: data.category,
+            price: data.price,
+            ratings: 0,
+            desc: data.desc,
+            status: "regular"
+        }
     };
+
     return (
         <div className='w-full h-full'>
             <Breadcrumbs routeName={"AddItems"} pageTitle={"Add New Items"} />
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-4 w-3/4 mx-auto p-6 shadow-xl border bg-transparent rounded-xl">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-3/4 mx-auto p-6 shadow-xl border bg-transparent rounded-xl">
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Recipe Name</label>
                     <input
                         type="text"
-                        onChange={(e) => setRecipeName(e.target.value)}
                         className="bg-transparent focus:outline-none focus:ring-1 focus:ring-yellow-400 mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
                         placeholder="Enter recipe name"
-                        required
+                        {...register("name", { required: true })}
                     />
                 </div>
 
@@ -36,10 +53,8 @@ const AddItems = () => {
                     <div className='w-full'>
                         <label className="block text-sm font-medium text-gray-700">Category</label>
                         <select
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
                             className="bg-transparent focus:outline-none focus:ring-1 focus:ring-yellow-400 mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
-                            required
+                            {...register("category", { required: true })}
                         >
                             <option value="" disabled>Select a category</option>
                             <option value="Chef's Specials">Chef's Specials</option>
@@ -52,10 +67,10 @@ const AddItems = () => {
                         <label className="block text-sm font-medium text-gray-700">Price</label>
                         <input
                             type="number"
-                            onChange={(e) => setPrice(e.target.value)}
                             className="bg-transparent focus:outline-none focus:ring-1 focus:ring-yellow-400 mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
                             placeholder="Enter price"
-                            required
+
+                            {...register("price", { required: true })}
                         />
                     </div>
                 </div>
@@ -66,7 +81,7 @@ const AddItems = () => {
                         className="bg-transparent focus:outline-none focus:ring-1 focus:ring-yellow-400 mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
                         placeholder="Enter recipe details"
                         rows="3"
-                        required
+                        {...register("desc", { required: true })}
                     />
                 </div>
 
@@ -76,14 +91,13 @@ const AddItems = () => {
                         type="file"
                         onChange={(e) => setFile(e.target.files[0])}
                         className="bg-transparent border rounded-md mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-yellow-100 file:text-yellow-600 hover:file:bg-yellow-200"
-                        required
+                        {...register("img", { required: true })}
                     />
                 </div>
 
                 <div className="flex justify-end">
-                    <button className="bg-yellow-400 font-extralight py-2 px-4 rounded-full hover:bg-yellow-500 transition-all size-fit flex justify-center mt-6 text-black">
-                        Add Item
-                    </button>
+                    <input type='submit' value={'Add Item'} className="bg-yellow-400 font-extralight py-2 px-4 rounded-full hover:bg-yellow-500 transition-all size-fit flex justify-center mt-6 text-black">
+                    </input>
                 </div>
             </form>
         </div>

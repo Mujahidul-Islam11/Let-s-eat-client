@@ -18,7 +18,7 @@ const Sidebar = () => {
 
 
   return (
-    <div className="h-full w-52 md:w-72 bg-white border-r border-b flex flex-col justify-between relative shadow-lg md:shadow-none rounded-lg md:rounded-none">
+    <div className="h-screen w-52 md:w-72 bg-white border-r border-b flex flex-col justify-between relative shadow-lg md:shadow-none rounded-lg md:rounded-none">
       <section>
       {isAdmin? <ul className="py-4 md:py-6 px-2 md:px-4">
         <Link>
