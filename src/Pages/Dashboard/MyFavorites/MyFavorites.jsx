@@ -105,7 +105,7 @@ const MyFavorites = () => {
                     className="size-10 md:size-16 object-cover rounded-md mx-auto flex justify-center"
                   />
                 </td>
-                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-center text-sm md:text-lg hidden md:block">
+                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-center text-sm md:text-lg hidden md:block mt-4">
                   {favItem?.name}
                 </td>
                 <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-center text-sm md:text-lg">
@@ -114,7 +114,7 @@ const MyFavorites = () => {
                 <td className="px-3 md:px-6 py-2 md:py-4">
                   <button
                     onClick={() => handleDelete(favItem)}
-                    className="text-xl text-red-500 text-center mx-auto flex justify-center"
+                    className="text-2xl text-red-500 text-center mx-auto flex justify-center"
                   >
                     <ion-icon name="trash-outline"></ion-icon>
                   </button>

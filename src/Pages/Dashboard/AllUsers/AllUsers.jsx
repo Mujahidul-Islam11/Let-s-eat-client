@@ -174,7 +174,7 @@ const AllUsers = () => {
                 <td className="px-3 md:px-6 py-2 md:py-4">
                   <button
                     onClick={() => handleDeleteUser(user)}
-                    className="text-xl text-red-500 text-center mx-auto flex justify-center"
+                    className="text-2xl text-red-500 text-center mx-auto flex justify-center"
                   >
                     <ion-icon name="trash-outline"></ion-icon>
                   </button>
