@@ -52,7 +52,7 @@ const AddItems = () => {
     };
 
     return (
-        <div className='w-full h-full'>
+        <div className='w-full'>
             <Breadcrumbs routeName={"AddItems"} pageTitle={"Add New Items"} />
             {/* Form */}
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-3/4 mx-auto p-6 shadow-xl border bg-transparent rounded-xl">

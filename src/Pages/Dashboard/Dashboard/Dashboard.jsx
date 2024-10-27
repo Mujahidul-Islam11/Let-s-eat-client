@@ -25,7 +25,7 @@ const Dashboard = () => {
           {drawerOpen && <Sidebar />}
         </section>
 
-        <section className="w-full h-full py-4 px-4 mx-auto flex justify-center items-center">
+        <section className="w-full h-full py-4 px-4 mx-auto flex justify-center items-center overflow-y-scroll no-scrollbar">
           <Outlet />
         </section>
       </div>
