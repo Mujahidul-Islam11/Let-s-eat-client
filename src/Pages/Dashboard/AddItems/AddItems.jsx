@@ -2,19 +2,17 @@ import React, { useState } from 'react';
 import Breadcrumbs from '../../../UI/Breadcrumbs/Breadcrumbs';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { toast } from 'sonner';
 
 const AddItems = () => {
     const [file, setFile] = useState(null);
+    const axiosSecure = useAxiosSecure();
     const hostingKey = import.meta.env.VITE_IMG_HOSTING_KEY;
     const hostingAPI = `https://api.imgbb.com/1/upload?key=${hostingKey}`
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = async (data) => {
-
         // host img on imgbb
         const imageFile = { image: data.img[0] }
         const imageRes = await axios.post(hostingAPI, imageFile, {
@@ -23,14 +21,33 @@ const AddItems = () => {
             },
         })
         const imgURL = imageRes.data.data.display_url;
-        const itemData = {
-            name: data.name,
-            img: imgURL,
-            category: data.category,
-            price: data.price,
-            ratings: 0,
-            desc: data.desc,
-            status: "regular"
+
+        // send data to the server
+        if (imageRes.data.success) {
+            const itemData = {
+                name: data.name,
+                img: imgURL,
+                category: data.category,
+                price: data.price,
+                rating: 0,
+                desc: data.desc,
+                status: "regular"
+            }
+
+            axiosSecure.post("/menu", itemData)
+            .then(result =>{
+                if(result.data.insertedId){
+                    toast.success(`${itemData.name} added to the database`,{
+                        duration: 3000
+                    })
+                }
+            })
+            .catch(err=>{
+                toast.error(`Oops! Something went wrong, try again later`,{
+                    duration: 3000
+                })
+            })
+
         }
     };
 
@@ -55,8 +72,9 @@ const AddItems = () => {
                         <select
                             className="bg-transparent focus:outline-none focus:ring-1 focus:ring-yellow-400 mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
                             {...register("category", { required: true })}
+                            defaultValue={"Select a category"}
                         >
-                            <option value="" disabled>Select a category</option>
+                            <option value="Select a category" disabled>Select a category</option>
                             <option value="Chef's Specials">Chef's Specials</option>
                             <option value="Salads">Salads</option>
                             <option value="Beverages">Beverages</option>
@@ -67,6 +85,7 @@ const AddItems = () => {
                         <label className="block text-sm font-medium text-gray-700">Price</label>
                         <input
                             type="number"
+                            step={0.1}
                             className="bg-transparent focus:outline-none focus:ring-1 focus:ring-yellow-400 mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
                             placeholder="Enter price"
 
