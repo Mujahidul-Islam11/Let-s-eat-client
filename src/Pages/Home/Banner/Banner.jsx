@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import { NavLink } from "react-router-dom";
 
 const Banner = () => {
@@ -18,7 +18,12 @@ const Banner = () => {
         pagination={{
           dynamicBullets: true,
         }}
-        modules={[Pagination]}
+        modules={[Pagination, Autoplay]}
+        autoplay={{
+          delay: 3000, 
+          disableOnInteraction: false, 
+        }}
+        speed={1000}
         className="mySwiper"
       >
         {contents?.map((content) => (
