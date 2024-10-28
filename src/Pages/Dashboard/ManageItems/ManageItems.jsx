@@ -93,42 +93,42 @@ const ManageItems = () => {
         <div className='w-full h-screen'>
             <Breadcrumbs routeName={"Manage Items"} pageTitle={"Manage Your Items"} />
             <div className='overflow-x-auto'>
-            <table className="min-w-full border-collapse border mx-auto rounded-xl">
-                <thead>
-                    <tr>{tableTitles}</tr>
-                </thead>
-                <tbody>
-                    {menu?.map((item, index) => (
-                        <tr key={index} className="border-t">
-                            <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium flex justify-center items-center">
-                                <img className='size-14 rounded-md object-cover' src={item?.img} alt="" />
-                            </td>
-                            <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-center text-sm">
-                                {item?.name}
-                            </td>
-                            <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-center text-sm">
-                                ${item?.price}
-                            </td>
-                            <td className="px-3 md:px-6 py-2 md:py-4">
-                                <div className="flex justify-center gap-4">
-                                    <button
-                                        onClick={() => handleUpdateItem(item)}
-                                        className="text-2xl text-yellow-500 text-center font-extrabold"
-                                    >
-                                        <ion-icon name="create-outline"></ion-icon>
-                                    </button>
-                                    <button
-                                        onClick={() => handleDeleteItem(item)}
-                                        className="text-2xl text-red-500 text-center"
-                                    >
-                                        <ion-icon name="trash-outline"></ion-icon>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+                <table className="min-w-full border-collapse border mx-auto rounded-xl">
+                    <thead>
+                        <tr>{tableTitles}</tr>
+                    </thead>
+                    <tbody>
+                        {menu?.map((item, index) => (
+                            <tr key={index} className="border-t">
+                                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium flex justify-center items-center">
+                                    <img className='size-14 rounded-md object-cover' src={item?.img} alt="" />
+                                </td>
+                                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-center text-sm">
+                                    {item?.name}
+                                </td>
+                                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-center text-sm">
+                                    ${item?.price}
+                                </td>
+                                <td className="px-3 md:px-6 py-2 md:py-4">
+                                    <div className="flex justify-center gap-4">
+                                        <button
+                                            onClick={() => handleUpdateItem(item)}
+                                            className="text-2xl text-yellow-500 text-center font-extrabold"
+                                        >
+                                            <ion-icon name="create-outline"></ion-icon>
+                                        </button>
+                                        <button
+                                            onClick={() => handleDeleteItem(item)}
+                                            className="text-2xl text-red-500 text-center"
+                                        >
+                                            <ion-icon name="trash-outline"></ion-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
 
             <Modal
@@ -192,12 +192,15 @@ const ManageItems = () => {
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700">Upload Food Image</label>
-                        <input
-                            type="file"
-                            onChange={(e) => setFile(e.target.files[0])}
-                            className="bg-transparent border rounded-md mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-yellow-100 file:text-yellow-600 hover:file:bg-yellow-200"
-                            {...register("img", { required: true })}
-                        />
+                        <div className="flex gap-3 items-center">
+                            <img className='size-10 rounded-md' src={selectedItem?.img} alt="" />
+                            <input
+                                type="file"
+                                onChange={(e) => setFile(e.target.files[0])}
+                                className="bg-transparent border rounded-md mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-yellow-100 file:text-yellow-600 hover:file:bg-yellow-200"
+                                {...register("img", { required: true })}
+                            />
+                        </div>
                     </div>
 
                     <div className="flex justify-end gap-3">
