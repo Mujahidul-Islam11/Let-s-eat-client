@@ -6,7 +6,6 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { toast } from 'sonner';
 
 const AddItems = () => {
-    const [file, setFile] = useState(null);
     const axiosSecure = useAxiosSecure();
     const hostingKey = import.meta.env.VITE_IMG_HOSTING_KEY;
     const hostingAPI = `https://api.imgbb.com/1/upload?key=${hostingKey}`
@@ -108,7 +107,6 @@ const AddItems = () => {
                     <label className="block text-sm font-medium text-gray-700">Upload Food Image</label>
                     <input
                         type="file"
-                        onChange={(e) => setFile(e.target.files[0])}
                         className="bg-transparent border rounded-md mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-yellow-100 file:text-yellow-600 hover:file:bg-yellow-200"
                         {...register("img", { required: true })}
                     />

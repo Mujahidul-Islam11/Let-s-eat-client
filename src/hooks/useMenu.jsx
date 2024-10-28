@@ -6,7 +6,7 @@ const useMenu = () => {
   const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(true);
 
-  const {data: menu=[]} = useQuery({
+  const {data: menu=[], refetch} = useQuery({
     queryKey: ["menu"],
     queryFn: async()=>{
       const res = await axiosSecure?.get("/menu");
@@ -16,7 +16,7 @@ const useMenu = () => {
   })
 
 
-  return [menu, loading, setLoading];
+  return [menu, refetch, loading, setLoading];
 };
 
 export default useMenu;

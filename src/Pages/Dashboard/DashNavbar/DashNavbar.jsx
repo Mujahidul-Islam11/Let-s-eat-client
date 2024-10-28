@@ -40,7 +40,7 @@ const DashNavbar = ({ setDrawerOpen, drawerOpen }) => {
           alt="User Profile"
           className="w-12 h-12 rounded-full object-cover hidden md:flex"
         />
-        <div className="dropdown dropdown-end z-50 visible md:hidden">
+        <div className="dropdown dropdown-end visible md:hidden">
           <div
             tabIndex={0}
             role="button"

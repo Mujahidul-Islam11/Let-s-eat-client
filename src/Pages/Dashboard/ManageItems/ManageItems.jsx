@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Breadcrumbs from '../../../UI/Breadcrumbs/Breadcrumbs';
 import useMenu from '../../../hooks/useMenu';
+import { toast } from 'sonner';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Modal from 'react-modal';
+import { useForm } from 'react-hook-form';
 
 const ManageItems = () => {
-    const [menu] = useMenu();
+    const [menu, refetch] = useMenu();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [updatedPrice, setUpdatedPrice] = useState('');
+    const axiosSecure = useAxiosSecure();
+    const hostingKey = import.meta.env.VITE_IMG_HOSTING_KEY;
+    const hostingAPI = `https://api.imgbb.com/1/upload?key=${hostingKey}`
+
     const tableTitles = (
         <>
             <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-700 text-sm md:text-lg">
@@ -15,14 +27,72 @@ const ManageItems = () => {
             <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-700 text-sm md:text-lg">
                 Price
             </th>
-            <th className="px-3 md:px-6 py-2 md:py-4text-center font-semibold text-gray-700 text-sm md:text-lg">
+            <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-700 text-sm md:text-lg">
                 Actions
             </th>
         </>
     );
+
+    const handleDeleteItem = (item) => {
+        toast.custom((t) => (
+            <div className="shadow-xl p-4 rounded-md bg-white mb-8 space-y-4">
+                <span className="flex justify-center border text-red-300 border-red-300 w-fit mx-auto text-3xl rounded-full p-3">
+                    <ion-icon name="alert-outline"></ion-icon>
+                </span>
+                <h1 className="text-center">
+                    Are you sure you want to delete {item?.name}??
+                </h1>
+                <div className="flex justify-center gap-12">
+                    <button
+                        onClick={() => {
+                            toast.dismiss(t);
+                        }}
+                        className="text-sm md:text-[16px] bg-green-500 font-extralight py-2 px-5 rounded-full hover:bg-green-600 transition-all size-fit shadow-md text-white"
+                    >
+                        No
+                    </button>
+                    <button
+                        onClick={() => {
+                            toast.dismiss(t);
+                            deleteItem();
+                        }}
+                        className="text-sm md:text-[16px] bg-red-500 font-extralight py-2 px-5 rounded-full hover:bg-red-600 transition-all size-fit shadow-md text-white"
+                    >
+                        Yes
+                    </button>
+                </div>
+            </div>
+        ));
+
+        const deleteItem = () => {
+            axiosSecure
+                .delete(`/menu/admin/${item?._id}`)
+                .then((result) => {
+                    if (result.data.deletedCount > 0) {
+                        toast.success(`Successfully deleted ${item?.name}`, {
+                            duration: 3000,
+                        });
+                        refetch();
+                    }
+                })
+                .catch((err) => {
+                    toast.error(`Oops! something went wrong, please try again.`, {
+                        duration: 3000,
+                    });
+                });
+        };
+    }
+
+    const handleUpdateItem = (item) => {
+        setSelectedItem(item);
+        setUpdatedPrice(item.price);
+        setModalIsOpen(true);
+    }
+
     return (
         <div className='w-full h-screen'>
             <Breadcrumbs routeName={"Manage Items"} pageTitle={"Manage Your Items"} />
+            <div className='overflow-x-auto'>
             <table className="min-w-full border-collapse border mx-auto rounded-xl">
                 <thead>
                     <tr>{tableTitles}</tr>
@@ -42,13 +112,13 @@ const ManageItems = () => {
                             <td className="px-3 md:px-6 py-2 md:py-4">
                                 <div className="flex justify-center gap-4">
                                     <button
-                                        // onClick={() => handleDeleteItem(item)}
+                                        onClick={() => handleUpdateItem(item)}
                                         className="text-2xl text-yellow-500 text-center font-extrabold"
                                     >
                                         <ion-icon name="create-outline"></ion-icon>
                                     </button>
                                     <button
-                                        // onClick={() => handleDeleteItem(item)}
+                                        onClick={() => handleDeleteItem(item)}
                                         className="text-2xl text-red-500 text-center"
                                     >
                                         <ion-icon name="trash-outline"></ion-icon>
@@ -59,6 +129,90 @@ const ManageItems = () => {
                     ))}
                 </tbody>
             </table>
+            </div>
+
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={() => setModalIsOpen(false)}
+                contentLabel="Update Item"
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-lg w-72 md:w-96"
+                overlayClassName="fixed inset-0 bg-black bg-opacity-50"
+            >
+                <form className="space-y-4 w-full mx-auto p-6 shadow-xl border bg-transparent rounded-xl">
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Recipe Name</label>
+                        <input
+                            type="text"
+                            className="bg-transparent focus:outline-none focus:ring-1 focus:ring-yellow-400 mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
+                            placeholder="Enter recipe name"
+                            value={selectedItem?.name}
+                            {...register("name", { required: true })}
+                            readOnly
+                        />
+                    </div>
+
+                    <div className='flex gap-3'>
+                        <div className='w-full'>
+                            <label className="block text-sm font-medium text-gray-700">Category</label>
+                            <select
+                                className="bg-transparent focus:outline-none focus:ring-1 focus:ring-yellow-400 mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
+                                {...register("category", { required: true })}
+                                defaultValue={selectedItem?.category}
+                            >
+                                <option value="Select a category" disabled>Select a category</option>
+                                <option value="Chef's Specials">Chef's Specials</option>
+                                <option value="Salads">Salads</option>
+                                <option value="Beverages">Beverages</option>
+                            </select>
+                        </div>
+
+                        <div className='w-full'>
+                            <label className="block text-sm font-medium text-gray-700">Price</label>
+                            <input
+                                type="number"
+                                step={0.1}
+                                className="bg-transparent focus:outline-none focus:ring-1 focus:ring-yellow-400 mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
+                                placeholder="Enter price"
+                                value={selectedItem?.price}
+                                {...register("price", { required: true })}
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Recipe Details</label>
+                        <textarea
+                            className="bg-transparent focus:outline-none focus:ring-1 focus:ring-yellow-400 mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
+                            placeholder="Enter recipe details"
+                            rows="3"
+                            value={selectedItem?.desc}
+                            {...register("desc", { required: true })}
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Upload Food Image</label>
+                        <input
+                            type="file"
+                            onChange={(e) => setFile(e.target.files[0])}
+                            className="bg-transparent border rounded-md mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-yellow-100 file:text-yellow-600 hover:file:bg-yellow-200"
+                            {...register("img", { required: true })}
+                        />
+                    </div>
+
+                    <div className="flex justify-end gap-3">
+
+                        <button
+                            onClick={() => setModalIsOpen(false)}
+                            className="bg-gray-400 hover:bg-gray-500 text-white transition-all font-extralight py-2 px-4 rounded-full size-fit flex justify-center mt-6"
+                        >
+                            Cancel
+                        </button>
+                        <input type='submit' value={'Save'} className="bg-yellow-400 cursor-pointer font-extralight py-2 px-4 rounded-full hover:bg-yellow-500 transition-all size-fit flex justify-center mt-6 text-black">
+                        </input>
+                    </div>
+                </form>
+            </Modal>
         </div>
     );
 };
