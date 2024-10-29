@@ -110,7 +110,7 @@ const ManageItems = () => {
             imgURL = imageRes.data.data.display_url;
         }
 
-        console.log(imgURL? imgURL: null)
+        console.log(imgURL ? imgURL : null)
 
         const itemData = {
             name: data.name,
@@ -124,41 +124,25 @@ const ManageItems = () => {
         console.log(itemData);
 
         // send data to the server
-        if (imageRes.data.success) {
-            axiosSecure.patch(`/menu/admin/${selectedItem?._id}`, itemData)
-            .then(result =>{
-                if(result.data.modifiedCount){
-                    toast.success(`${itemData.name} food item updated`,{
+        axiosSecure.patch(`/menu/admin/${selectedItem?._id}`, itemData)
+            .then(result => {
+                if (result.data.modifiedCount) {
+                    setModalIsOpen(false)
+                    toast.success(`${itemData.name} food item updated`, {
                         duration: 3000
                     })
+                    refetch();
                 }
             })
-            .catch(err=>{
-                toast.error(`Oops! Something went wrong, try again later`,{
+            .catch(err => {
+                toast.error(`Oops! Something went wrong, try again later`, {
                     duration: 3000
                 })
             })
 
-        }
-        else {
-            axiosSecure.patch(`/menu/admin/${selectedItem?._id}`, itemData)
-            .then(result =>{
-                if(result.data.modifiedCount){
-                    toast.success(`${itemData.name} food item updated`,{
-                        duration: 3000
-                    })
-                }
-            })
-            .catch(err=>{
-                toast.error(`Oops! Something went wrong, try again later`,{
-                    duration: 3000
-                })
-            })
 
-        }
     };
 
-    console.log(selectedItem)
 
 
     return (
