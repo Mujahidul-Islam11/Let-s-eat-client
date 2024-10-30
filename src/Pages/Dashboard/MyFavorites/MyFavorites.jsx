@@ -2,6 +2,7 @@ import { toast } from "sonner";
 import Breadcrumbs from "../../../UI/Breadcrumbs/Breadcrumbs";
 import useFavorites from "../../../hooks/useFavorites";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { NavLink } from "react-router-dom";
 
 const MyFavorites = () => {
   const [favItems, refetch] = useFavorites();
@@ -85,9 +86,11 @@ const MyFavorites = () => {
       <section className="flex justify-between items-center w-full md:w-3/4 mx-auto mb-4 gap-3">
         <h3 className="text-sm md:text-lg">Items: {favItems?.length}</h3>
         <h3 className="text-sm md:text-lg">Total Price: {totalPrice}</h3>
-        <button className="text-sm md:text-lg bg-yellow-400 font-extralight py-2 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center text-black">
+        <NavLink to={favItems?.length > 0 && '/dashboard/payment'}>
+        <button disabled={favItems?.length === 0} className="text-sm md:text-lg bg-yellow-400 font-extralight py-2 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center text-black disabled:bg-[#D7D9DB] disabled:text-[#C9CCCD]">
           Pay
         </button>
+        </NavLink>
       </section>
 
       <div className="overflow-x-auto">

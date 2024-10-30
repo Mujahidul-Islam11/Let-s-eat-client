@@ -1,22 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "./useAxiosPublic";
 import { useState } from "react";
-import useAxiosSecure from "./useAxiosSecure";
 
 const useMenu = () => {
-  const axiosSecure = useAxiosSecure();
-  const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
-  const {data: menu=[], refetch} = useQuery({
+  const { data: menu = [], refetch, isLoading: loading } = useQuery({
     queryKey: ["menu"],
-    queryFn: async()=>{
-      const res = await axiosSecure?.get("/menu");
-      setLoading(false)
+    queryFn: async () => {
+      const res = await axiosPublic.get("/menu");
       return res.data;
-    }
-  })
+    },
+  });
 
-
-  return [menu, refetch, loading, setLoading];
+  return [menu, refetch, loading];
 };
 
 export default useMenu;

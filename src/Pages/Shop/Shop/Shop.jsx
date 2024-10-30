@@ -9,10 +9,9 @@ import SectionTitle from "../../../UI/SectionTitle/SectionTitle";
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredMenu, setFilteredMenu] = useState([]);
-  const [menu, loading] = useMenu();
+  const [menu, , loading] = useMenu();
   const [favItems, refetch] = useFavorites();
   
-
   const categoryBtns = (
     <>
       <button
@@ -62,7 +61,6 @@ const Shop = () => {
     }
   }, [menu, selectedCategory]);
 
-
   return (
     <div className="text-black">
       <SectionBanner
@@ -88,8 +86,8 @@ const Shop = () => {
           {loading ? (
             <div className="text-center flex justify-center mb-24">
               <svg id="svgStyle" viewBox="0 0 50 50">
-                <circle class="ring" cx="25" cy="25" r="20"></circle>
-                <circle class="ball" cx="25" cy="5" r="3.5"></circle>
+                <circle className="ring" cx="25" cy="25" r="20"></circle>
+                <circle className="ball" cx="25" cy="5" r="3.5"></circle>
               </svg>
             </div>
           ) : (
