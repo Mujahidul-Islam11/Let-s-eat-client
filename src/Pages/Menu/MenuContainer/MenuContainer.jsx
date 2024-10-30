@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import SectionTitle from "../../../UI/SectionTitle/SectionTitle";
 
 const MenuContainer = () => {
-  const [menu, loading] = useMenu();
+  const [menu, ,loading] = useMenu();
 
   return (
     <div className="p-6 md:p-10 my-12">

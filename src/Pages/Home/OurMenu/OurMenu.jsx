@@ -5,7 +5,7 @@ import SectionTitle from "../../../UI/SectionTitle/SectionTitle";
 
 const OurMenu = () => {
   const [filteredMenu, setFilteredMenu] = useState([]);
-  const [menu, loading] = useMenu();
+  const [menu,, loading] = useMenu();
   
   useEffect(() => {
     const popularMenu = menu?.filter((item) => item.status === "popular");
