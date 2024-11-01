@@ -87,7 +87,7 @@ const MyFavorites = () => {
         <h3 className="text-sm md:text-lg">Items: {favItems?.length}</h3>
         <h3 className="text-sm md:text-lg">Total Price: {totalPrice}</h3>
         <NavLink to={favItems?.length > 0 && '/dashboard/payment'}>
-        <button disabled={favItems?.length === 0} className="text-sm md:text-lg bg-yellow-400 font-extralight py-2 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center text-black disabled:bg-[#D7D9DB] disabled:text-[#C9CCCD]">
+        <button disabled={favItems?.length === 0} className="text-sm md:text-lg bg-yellow-400 font-extralight py-2 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center cursor-pointer text-black disabled:cursor-not-allowed disabled:bg-[#D7D9DB] disabled:text-[#C9CCCD]">
           Pay
         </button>
         </NavLink>

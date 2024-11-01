@@ -1,25 +1,29 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
-import useMenu from '../../../hooks/useMenu';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../provider/AuthProvider';
+import useFavorites from '../../../hooks/useFavorites';
+import { toast } from 'sonner';
 
 const CheckOutForm = () => {
     const [error, setError] = useState('');
     const stripe = useStripe();
     const elements = useElements();
-    const [menu] = useMenu();
+    const [favItems] = useFavorites();
     const { user } = useContext(AuthContext);
-    const totalPrice = menu?.reduce((total, item) => total + item.price, 0);
     const axiosSecure = useAxiosSecure();
     const [clientSecret, setClientSecret] = useState('')
+    const [transactionId, setTransactionId] = useState('')
+    const totalPrice = favItems?.reduce((total, item) => total + item.price, 0);
 
     // load payment intent
     useEffect(() => {
-        axiosSecure.post("/create-payment-intent", { price: totalPrice })
-            .then(res => {
-                setClientSecret(res.data.clientSecret);
-            })
+        if (totalPrice > 0) {
+            axiosSecure.post("/create-payment-intent", { price: totalPrice })
+                .then(res => {
+                    setClientSecret(res.data.clientSecret);
+                })
+        }
     }, [])
 
 
@@ -66,34 +70,54 @@ const CheckOutForm = () => {
         }
         else {
             console.log("intent", paymentIntent)
+            if (paymentIntent.status === "succeeded") {
+                setTransactionId(paymentIntent.id)
+                // send payment info to database
+                const paymentInfo = {
+                    email: user?.email,
+                    transactionId: paymentIntent.id,
+                    price: totalPrice,
+                    date: new Date(),
+                    favIds: favItems?.map(item => item._id),
+                    status: "pending",
+                }
+                axiosSecure.post("/payments", paymentInfo)
+                    .then(res => {
+                        if(res.data.result.insertedId){
+                            toast.success("Payment successful")
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            }
         }
     }
 
     return (
-        <div className=''>
-            <form className='w-1/2 mx-auto mt-24 border rounded-md px-8 py-12' onSubmit={handleSubmit}>
-                <CardElement
-                    options={{
-                        style: {
-                            base: {
-                                fontSize: '16px',
-                                color: '#424770',
-                                '::placeholder': {
-                                    color: '#aab7c4',
-                                },
-                            },
-                            invalid: {
-                                color: '#9e2146',
+        <form className='w-1/2 mx-auto mt-24 border rounded-md px-8 py-12' onSubmit={handleSubmit}>
+            <CardElement
+                options={{
+                    style: {
+                        base: {
+                            fontSize: '16px',
+                            color: '#424770',
+                            '::placeholder': {
+                                color: '#aab7c4',
                             },
                         },
-                    }}
-                />
-                <button className='text-[16px] bg-yellow-400 font-extralight py-1 px-4 mt-4 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center text-black ' type="submit" disabled={!stripe || !clientSecret}>
-                    Pay
-                </button>
-                <p className='text-red-600 text-sm mt-2'>{error}</p>
-            </form>
-        </div>
+                        invalid: {
+                            color: '#9e2146',
+                        },
+                    },
+                }}
+            />
+            <button className='text-[16px] bg-yellow-400 font-extralight py-1 px-4 mt-4 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-lg cursor-pointer flex justify-center text-black disabled:bg-[#D7D9DB] disabled:text-[#C9CCCD] disabled:cursor-not-allowed' type="submit" disabled={!stripe || !clientSecret}>
+                Pay
+            </button>
+            <p className='text-red-600 text-sm mt-3'>{error}</p>
+            {transactionId && <p className='text-green-600 text-sm mt-3'>Your transaction Id: {transactionId}</p>}
+        </form>
     );
 };
 

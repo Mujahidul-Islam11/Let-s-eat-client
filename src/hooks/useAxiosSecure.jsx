@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
@@ -27,7 +27,9 @@ const useAxiosSecure = () => {
         if(status === 401 || status === 403){
             logOut()
             .then(()=>{
-                navigate("/login")
+                useEffect(()=>{
+                    navigate("/login")
+                },[navigate])
             })
         } 
         return Promise.reject(err)
