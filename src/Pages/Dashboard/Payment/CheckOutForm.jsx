@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../provider/AuthProvider';
 import useFavorites from '../../../hooks/useFavorites';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const CheckOutForm = () => {
     const [error, setError] = useState('');
@@ -15,6 +16,7 @@ const CheckOutForm = () => {
     const [clientSecret, setClientSecret] = useState('')
     const [transactionId, setTransactionId] = useState('')
     const totalPrice = favItems?.reduce((total, item) => total + item.price, 0);
+    const navigate = useNavigate();
 
     // load payment intent
     useEffect(() => {
@@ -83,8 +85,9 @@ const CheckOutForm = () => {
                 }
                 axiosSecure.post("/payments", paymentInfo)
                     .then(res => {
-                        if(res.data.result.insertedId){
-                            toast.success("Payment successful")
+                        if (res.data.result.insertedId) {
+                            toast.success("Payment successful");
+                            navigate("/dashboard/paymentHistory")
                         }
                     })
                     .catch(err => {
