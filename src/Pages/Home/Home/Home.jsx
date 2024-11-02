@@ -4,10 +4,12 @@ import Services from '../Services/Services';
 import OurMenu from '../OurMenu/OurMenu';
 import OurChefs from '../OurChefs/OurChefs';
 import Newsletter from '../Newsletter/Newsletter';
+import { Toaster } from 'sonner';
 
 const Home = () => {
     return (
         <div className='w-full'>
+            <Toaster richColors/>
            <Banner></Banner>
            <AboutUs></AboutUs>
            <Services></Services>

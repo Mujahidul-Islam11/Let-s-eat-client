@@ -21,7 +21,7 @@ const Sidebar = () => {
     <div className="h-screen w-52 md:w-72 bg-white border-r border-b flex flex-col justify-between relative shadow-lg md:shadow-none rounded-lg md:rounded-none">
       <section>
       {isAdmin? <ul className="py-4 md:py-6 px-2 md:px-4">
-        <Link>
+        <Link to={"/dashboard/adminHome"}>
           <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
             <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
               <ion-icon name="grid-outline"></ion-icon>
@@ -62,7 +62,7 @@ const Sidebar = () => {
           </li>
         </Link>
       </ul>: <ul className="py-4 md:py-6 px-2 md:px-4">
-        <Link>
+        <Link to={"/dashboard/userHome"}>
           <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
             <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
               <ion-icon name="grid-outline"></ion-icon>
