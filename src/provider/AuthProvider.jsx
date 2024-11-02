@@ -19,20 +19,20 @@ const AuthProvider = ({ children }) => {
 
   // create user
   const createUser = (email, pass) => {
-    return createUserWithEmailAndPassword(auth, email, pass);
     setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, pass);
   };
 
   // Sign in user
   const signIn = (email, pass) => {
-    return signInWithEmailAndPassword(auth, email, pass);
     setLoading(true);
+    return signInWithEmailAndPassword(auth, email, pass);
   };
 
   // Sign out user
   const logOut = () => {
-    return signOut(auth);
     setLoading(true);
+    return signOut(auth);
   };
 
   // update user
@@ -52,13 +52,14 @@ const AuthProvider = ({ children }) => {
         .then(res => {
           if(res.data.token){
             localStorage.setItem("access-token", res.data.token);
+            setLoading(false);
           }
         })
       }
       else{
-        localStorage.removeItem("access-token");
-      }
-      setLoading(false);
+          localStorage.removeItem("access-token");
+          setLoading(false);
+        }
     });
 
     return () => {

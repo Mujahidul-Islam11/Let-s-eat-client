@@ -1,20 +1,19 @@
 import axios from "axios";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
 
 
 const axiosSecure = axios.create({
-    baseURL: "http://localhost:5000/"
+    baseURL: "https://let-s-eat-server-nu.vercel.app/"
 })
 const useAxiosSecure = () => {
-     const {logOut} = useContext(AuthContext);
-     const navigate = useNavigate();
+    const { logOut } = useContext(AuthContext);
 
     // pass token with each api call
     axiosSecure.interceptors.request.use((config) => {
         const token = localStorage.getItem("access-token");
         config.headers.authorization = `Bearer ${token}`;
+        console.log(token)
         return config
     }, (err) => {
         return Promise.reject(err)
@@ -24,14 +23,9 @@ const useAxiosSecure = () => {
         return response
     }, (err) => {
         const status = err.response.status;
-        if(status === 401 || status === 403){
+        if (status === 401 || status === 403) {
             logOut()
-            .then(()=>{
-                useEffect(()=>{
-                    navigate("/login")
-                },[navigate])
-            })
-        } 
+        }
         return Promise.reject(err)
     })
 
