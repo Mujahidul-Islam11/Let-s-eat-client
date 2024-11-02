@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import StatsChart from "./StatsChart";
 
 
 const AdminHome = () => {
@@ -47,6 +48,7 @@ const AdminHome = () => {
                     </span>
                 </div>
             </div>
+            <StatsChart/>
         </section>
     );
 };
