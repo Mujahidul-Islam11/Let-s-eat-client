@@ -106,12 +106,12 @@ const Sidebar = () => {
       </section>
       <section>
       <ul className="py-4 md:py-6 px-2 md:px-4">
-        <Link>
+        <Link to={"/"}>
           <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
             <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
-              <ion-icon name="settings-outline"></ion-icon>
+              <ion-icon name="home-outline"></ion-icon>
             </span>
-            <span className="text-gray-700">Settings</span>
+            <span className="text-gray-700">Home</span>
           </li>
         </Link>
         <Link>

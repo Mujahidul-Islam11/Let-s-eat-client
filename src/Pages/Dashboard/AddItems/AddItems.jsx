@@ -53,7 +53,7 @@ const AddItems = () => {
         <div className='w-full'>
             <Breadcrumbs routeName={"AddItems"} pageTitle={"Add New Items"} />
             {/* Form */}
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-3/4 mx-auto p-6 shadow-xl border bg-transparent rounded-xl">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full md:w-3/4 mx-auto p-6 shadow-xl border bg-transparent rounded-xl">
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Recipe Name</label>
                     <input
