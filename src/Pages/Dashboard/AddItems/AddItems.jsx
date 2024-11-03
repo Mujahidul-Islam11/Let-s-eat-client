@@ -3,12 +3,14 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const AddItems = () => {
     const axiosSecure = useAxiosSecure();
     const hostingKey = import.meta.env.VITE_IMG_HOSTING_KEY;
     const hostingAPI = `https://api.imgbb.com/1/upload?key=${hostingKey}`
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         // host img on imgbb
@@ -35,9 +37,10 @@ const AddItems = () => {
             axiosSecure.post("/menu", itemData)
             .then(result =>{
                 if(result.data.insertedId){
-                    toast.success(`${itemData.name} added to the database`,{
+                    toast.success(`You added ${itemData.name} to the database`,{
                         duration: 3000
                     })
+                    navigate("/dashboard/manageItems")
                 }
             })
             .catch(err=>{

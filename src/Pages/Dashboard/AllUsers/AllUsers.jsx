@@ -70,7 +70,7 @@ const AllUsers = () => {
         .then((result) => {
           if (result.data.modifiedCount > 0) {
             toast.success(
-              `Successfully updated ${user?.name}'s role to Admin`,
+              `You added ${user?.name} as a Admin`,
               {
                 duration: 3000,
               }
@@ -122,7 +122,7 @@ const AllUsers = () => {
         .delete(`/users/admin/${user?._id}`)
         .then((result) => {
           if (result.data.deletedCount > 0) {
-            toast.success(`Successfully deleted ${user?.name}`, {
+            toast.success(`You deleted ${user?.name}`, {
               duration: 3000,
             });
             refetch();
