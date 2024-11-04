@@ -4,7 +4,8 @@ import { AuthContext } from "../provider/AuthProvider";
 
 
 const axiosSecure = axios.create({
-    baseURL: "https://let-s-eat-server-nu.vercel.app/"
+    // baseURL: "https://let-s-eat-server-nu.vercel.app/"
+    baseURL: "http://localhost:5000/"
 })
 const useAxiosSecure = () => {
     const { logOut } = useContext(AuthContext);
@@ -13,7 +14,6 @@ const useAxiosSecure = () => {
     axiosSecure.interceptors.request.use((config) => {
         const token = localStorage.getItem("access-token");
         config.headers.authorization = `Bearer ${token}`;
-        console.log(token)
         return config
     }, (err) => {
         return Promise.reject(err)
