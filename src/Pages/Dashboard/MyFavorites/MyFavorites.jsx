@@ -9,16 +9,16 @@ const MyFavorites = () => {
   const axiosSecure = useAxiosSecure();
   const tableTitles = (
     <>
-      <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-700 text-sm md:text-lg">
+      <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-600 text-sm md:text-lg">
         Images
       </th>
-      <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-700 text-sm md:text-lg hidden md:block">
+      <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-600 text-sm md:text-lg hidden md:block">
         Product
       </th>
-      <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-700 text-sm md:text-lg">
+      <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-600 text-sm md:text-lg">
         Price
       </th>
-      <th className="px-3 md:px-6 py-2 md:py-4text-center font-semibold text-gray-700 text-sm md:text-lg">
+      <th className="px-3 md:px-6 py-2 md:py-4text-center font-semibold text-gray-600 text-sm md:text-lg">
         Remove
       </th>
     </>
@@ -95,7 +95,7 @@ const MyFavorites = () => {
 
       <div className="overflow-x-auto">
         <table className="min-w-full border-collapse border mx-auto">
-          <thead>
+          <thead className="bg-[#F2F2F2]">
             <tr>{tableTitles}</tr>
           </thead>
           <tbody>

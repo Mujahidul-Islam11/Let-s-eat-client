@@ -18,6 +18,8 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import BookTable from "../Pages/Dashboard/BookTable/BookTable";
+import Bookings from "../Pages/Dashboard/Bookings/Bookings";
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +81,14 @@ export const router = createBrowserRouter([
       {
         path: "userHome",
         element: <UserHome/>,
+      },
+      {
+        path: "book",
+        element: <BookTable/>,
+      },
+      {
+        path: "bookings",
+        element: <Bookings/>,
       },
 
       // admin routes

@@ -18,16 +18,16 @@ const PaymentHistory = () => {
 
     const tableTitles = (
         <>
-            <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-700 text-sm md:text-lg">
+            <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-600 text-sm md:text-lg">
                 #
             </th>
-            <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-700 text-sm md:text-lg hidden md:block">
+            <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-600 text-sm md:text-lg hidden md:block">
                 Price
             </th>
-            <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-700 text-sm md:text-lg">
+            <th className="px-3 md:px-6 py-2 md:py-4 text-center font-semibold text-gray-600 text-sm md:text-lg">
                 Transaction Id
             </th>
-            <th className="px-3 md:px-6 py-2 md:py-4text-center font-semibold text-gray-700 text-sm md:text-lg">
+            <th className="px-3 md:px-6 py-2 md:py-4text-center font-semibold text-gray-600 text-sm md:text-lg">
                 Status
             </th>
         </>
@@ -38,7 +38,7 @@ const PaymentHistory = () => {
             <Breadcrumbs routeName={"Payment History"} pageTitle={"Your Payment History"} />
             <div className="overflow-x-auto">
                 <table className="min-w-full border-collapse border mx-auto">
-                    <thead>
+                    <thead className="bg-[#F2F2F2]">
                         <tr>{tableTitles}</tr>
                     </thead>
                     <tbody>
@@ -50,11 +50,11 @@ const PaymentHistory = () => {
                                 <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-center text-sm md:text-lg hidden md:block mt-4">
                                     ${data?.price.toFixed(2)}
                                 </td>
-                                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-center text-sm md:text-lg">
+                                <td className="px-3 md:px-6 py-2 md:py-4 text-green-500 font-medium text-center text-sm md:text-lg">
                                     {data?.transactionId}
                                 </td>
-                                <td className="px-3 md:px-6 py-2 md:py-4 text-center flex justify-center">
-                                    <span className="bg-gray-300 text-center px-3 py-1 rounded-md">{data?.status}</span>
+                                <td className="px-3 md:px-6 py-2 md:py-4 text-center">
+                                    <span className="text-yellow-500 text-center">{data?.status}..</span>
                                 </td>
                             </tr>
                         ))}
