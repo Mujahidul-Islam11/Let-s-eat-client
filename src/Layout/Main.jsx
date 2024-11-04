@@ -6,11 +6,12 @@ import { Toaster } from "sonner";
 
 const Main = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [openFavorite, setOpenFavorite] = useState(false);
 
   return (
     <div onClick={() => setOpenMenu(false)} className=" relative lg:max-w-7xl lg:mx-auto">
       <Toaster/>
-      <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu}></Navbar>
+      <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} openFavorite={openFavorite} setOpenFavorite={setOpenFavorite}></Navbar>
       <div className="py-3">
       <Outlet></Outlet>
       </div>

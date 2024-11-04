@@ -4,7 +4,7 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import useFavorites from "../../../hooks/useFavorites";
 import useAdmin from "../../../hooks/useAdmin";
 
-const Navbar = ({ openMenu, setOpenMenu }) => {
+const Navbar = ({ openMenu, setOpenMenu, openFavorite, setOpenFavorite }) => {
   const { user, logOut } = useContext(AuthContext); 
   const [isAdmin] = useAdmin();
   const [favItems] = useFavorites();
@@ -31,7 +31,7 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
         </Link>
       </li>
       <li>
-        <Link to="/shop" className="text-[#000] lg:text-[16px] hover:text-yellow-400 duration-100">
+        <Link to={`${user ? "/shop": "/login"}`} className="text-[#000] lg:text-[16px] hover:text-yellow-400 duration-100">
           Our Shop
         </Link>
       </li>
@@ -53,6 +53,13 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
       {/*drawer - Small device */}
       {openMenu && (
         <div className="z-50 w-40 h-40 absolute top-20 left-3 bg-white shadow-md px-6 py-3 rounded-md">
+          <ul className="space-y-1">{navLists}</ul>
+        </div>
+      )}
+
+      {/*drawer (favorites) - Small device */}
+      {openFavorite && (
+        <div className="z-50 w-40 h-40 absolute top-20 right-3 bg-white shadow-md px-6 py-3 rounded-md">
           <ul className="space-y-1">{navLists}</ul>
         </div>
       )}
@@ -94,7 +101,8 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
 
           {/* nav-3*/}
           <div className="flex items-center space-x-0 md:space-x-4">
-            <div className="relative text-lg md:text-2xl border text-red-400 flex justify-center items-center shadow-md cursor-pointer rounded-full p-2 md:p-3">
+
+            <div onClick={()=> setOpenFavorite(!openFavorite)} className="relative text-lg md:text-2xl border text-red-400 flex justify-center items-center shadow-md cursor-pointer rounded-full p-2 md:p-3">
               <ion-icon name="heart-outline"></ion-icon>
               {favItems.length > 0 && <span className="absolute -top-1 right-0 h-[14px] w-[14px] rounded-full bg-red-400"></span>}
             </div>
