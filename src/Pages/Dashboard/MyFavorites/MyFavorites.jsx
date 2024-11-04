@@ -36,23 +36,23 @@ const MyFavorites = () => {
           Are you sure you want to remove {itemData?.name} from favorites??
         </h1>
         <div className="flex justify-center gap-12">
-        <button
-          onClick={() => {
-            toast.dismiss(t);
-          }}
-          className="text-sm md:text-[16px] bg-green-500 font-extralight py-2 px-5 rounded-full hover:bg-green-600 transition-all size-fit shadow-md text-white"
-        >
-          No
-        </button>
-        <button
-          onClick={() => {
-            toast.dismiss(t);
-            deleteItem();
-          }}
-          className="text-sm md:text-[16px] bg-red-500 font-extralight py-2 px-5 rounded-full hover:bg-red-600 transition-all size-fit shadow-md text-white"
-        >
-          Yes
-        </button>
+          <button
+            onClick={() => {
+              toast.dismiss(t);
+            }}
+            className="text-sm md:text-[16px] bg-green-500 font-extralight py-2 px-5 rounded-full hover:bg-green-600 transition-all size-fit shadow-md text-white"
+          >
+            No
+          </button>
+          <button
+            onClick={() => {
+              toast.dismiss(t);
+              deleteItem();
+            }}
+            className="text-sm md:text-[16px] bg-red-500 font-extralight py-2 px-5 rounded-full hover:bg-red-600 transition-all size-fit shadow-md text-white"
+          >
+            Yes
+          </button>
         </div>
       </div>
     ));
@@ -87,9 +87,9 @@ const MyFavorites = () => {
         <h3 className="text-sm md:text-lg">Items: {favItems?.length}</h3>
         <h3 className="text-sm md:text-lg">Total Price: {totalPrice}</h3>
         <NavLink to={favItems?.length > 0 && '/dashboard/payment'}>
-        <button disabled={favItems?.length === 0} className="text-sm md:text-lg bg-yellow-400 font-extralight py-2 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center cursor-pointer text-black disabled:cursor-not-allowed disabled:bg-[#D7D9DB] disabled:text-[#C9CCCD]">
-          Pay
-        </button>
+          <button disabled={favItems?.length === 0} className="text-sm md:text-lg bg-yellow-400 font-extralight py-2 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md flex justify-center cursor-pointer text-black disabled:cursor-not-allowed disabled:bg-[#D7D9DB] disabled:text-[#C9CCCD]">
+            Pay
+          </button>
         </NavLink>
       </section>
 
@@ -126,6 +126,14 @@ const MyFavorites = () => {
             ))}
           </tbody>
         </table>
+        {favItems.length === 0 && <div className="w-full px-8 py-12 border mt-6">
+          <h3 className="text-3xl text-center">No Favorites Yet – Start Adding!</h3>
+          <NavLink to={"/shop"}>
+            <button className="bg-yellow-400 text-black font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md mx-auto flex justify-center mt-6">
+              Order Now
+            </button>
+          </NavLink>
+        </div>}
       </div>
     </div>
   );
