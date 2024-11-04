@@ -95,7 +95,7 @@ const Bookings = () => {
                                 <td className="px-3 md:px-6 py-2 md:py-4">
                                     {index+1}
                                 </td>
-                                <td className="px-3 md:px-6 py-2 md:py-4">
+                                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-[16px]">
                                     {booking?.name}
                                 </td>
                                 <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-[16px]">
@@ -104,13 +104,13 @@ const Bookings = () => {
                                 <td className="px-3 md:px-6 py-2 md:py-4 text-sm text-gray-800 font-medium text-[16px]">
                                     {booking?.date}
                                 </td>
-                                <td className="px-3 md:px-6 py-2 md:py-4 text-sm">
+                                <td className="px-3 md:px-6 py-2 md:py-4 text-sm text-gray-800 font-medium text-[16px]">
                                     {booking?.time}
                                 </td>
-                                <td className="px-3 md:px-6 py-2 md:py-4">
+                                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-[16px]">
                                     ${booking?.bill}
                                 </td>
-                                <td className={`px-3 md:px-6 py-2 md:py-4 ${booking?.status === "pending" ? "text-yellow-500" : "text-green-500"}`}>
+                                <td className={`px-3 md:px-6 py-2 md:py-4 text-[16px] ${booking?.status === "pending" ? "text-yellow-500" : "text-green-500"}`}>
                                     {booking?.status}..
                                 </td>
                                 <td className="px-3 md:px-6 py-2 md:py-4">

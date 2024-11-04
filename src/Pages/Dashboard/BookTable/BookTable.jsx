@@ -19,7 +19,7 @@ const BookTable = () => {
         const newTime = `${adjustedHour}:${minute} ${period}`;
         const guest = data?.guest.split(" ");
         const bill = 5 * Number(guest[0]);
-        
+
 
         const tableInfo = {
             date: data.date,
@@ -47,10 +47,9 @@ const BookTable = () => {
         <div className='w-full h-full'>
             <Breadcrumbs routeName={"Reservation"} pageTitle={"Book A Table"} />
             {/* Table booking form */}
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full md:w-3/4 mx-auto p-6 shadow-xl border bg-transparent rounded-xl">
-                <div className='flex gap-3'>
-
-                    <div className='w-full'>
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full md:w-3/4 mx-auto p-6 shadow-xl border bg-transparent rounded-xl">
+                <div className='grid gird-cols-2 md:grid-cols-3 gap-3 space-y-4'>
+                    <div className='w-full mt-4'>
                         <label className="block text-sm font-bold text-gray-900">Date*</label>
                         <input
                             type="date"
@@ -85,8 +84,8 @@ const BookTable = () => {
                             <option value="6 person">6 Person</option>
                         </select>
                     </div>
-                </div>
-                <div className='flex gap-3'>
+
+
                     <div className='w-full'>
                         <label className="block text-sm font-bold text-gray-900">Full Name*</label>
                         <input
@@ -120,11 +119,12 @@ const BookTable = () => {
                             {...register("email", { required: true })}
                         />
                     </div>
-                </div>
 
-                <div className="flex justify-end">
-                    <input type='submit' value={'Book Table'} className="bg-yellow-400 cursor-pointer shadow-md font-extralight py-2 px-4 rounded-full hover:bg-yellow-500 transition-all size-fit flex justify-center mt-6 text-black">
-                    </input>
+
+                    <div className="flex justify-end">
+                        <input type='submit' value={'Book Table'} className="bg-yellow-400 cursor-pointer shadow-md font-extralight py-2 px-4 rounded-full hover:bg-yellow-500 transition-all size-fit flex justify-center mt-6 text-black">
+                        </input>
+                    </div>
                 </div>
             </form>
         </div>
