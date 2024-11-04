@@ -120,12 +120,11 @@ const BookTable = () => {
                         />
                     </div>
 
-
+                </div>
                     <div className="flex justify-end">
-                        <input type='submit' value={'Book Table'} className="bg-yellow-400 cursor-pointer shadow-md font-extralight py-2 px-4 rounded-full hover:bg-yellow-500 transition-all size-fit flex justify-center mt-6 text-black">
+                        <input type='submit' value={'Book Table'} className="bg-yellow-400 cursor-pointer shadow-md font-extralight py-2 px-4 rounded-full hover:bg-yellow-500 transition-all size-fit mt-6 text-black">
                         </input>
                     </div>
-                </div>
             </form>
         </div>
     );

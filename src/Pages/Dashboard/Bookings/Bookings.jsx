@@ -10,15 +10,15 @@ const Bookings = () => {
 
     const tableTitles = (
         <>
-            <th className="px-3 md:px-6 py-2 md:py-4  font-semibold text-gray-600 text-[16px] text-start">
+            <th className="px-3 md:px-6 py-2 md:py-4 font-semibold text-gray-600 text-[16px] text-start">
             </th>
-            <th className="px-3 md:px-6 py-2 md:py-4  font-semibold text-gray-600 text-[16px] text-start">
+            <th className="px-3 md:px-6 py-2 md:py-4 font-semibold text-gray-600 text-[16px] text-start">
                 Name
             </th>
-            <th className="px-3 md:px-6 py-2 md:py-4  font-semibold text-gray-600 text-[16px] text-start hidden md:block">
+            <th className="px-3 md:px-6 py-2 md:py-4 font-semibold text-gray-600 text-[16px] text-start hidden md:block">
                 Guest Numbers
             </th>
-            <th className="px-3 md:px-6 py-2 md:py-4  font-semibold text-gray-600 text-[16px] text-start">
+            <th className="px-3 md:px-6 py-2 md:py-4 font-semibold text-gray-600 text-[16px] text-start">
                 Date
             </th>
             <th className="px-3 md:px-6 py-2 md:py-4 font-semibold text-gray-600 text-[16px] text-start">
