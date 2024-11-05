@@ -20,6 +20,7 @@ import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import BookTable from "../Pages/Dashboard/BookTable/BookTable";
 import Bookings from "../Pages/Dashboard/Bookings/Bookings";
+import Manage from "../Pages/Dashboard/Manage/Manage";
 
 export const router = createBrowserRouter([
   {
@@ -103,6 +104,10 @@ export const router = createBrowserRouter([
       {
         path: "manageItems",
         element: <AdminRoute><ManageItems/></AdminRoute>
+      },
+      {
+        path: "manage",
+        element: <AdminRoute><Manage/></AdminRoute>
       },
       {
         path: "adminHome",

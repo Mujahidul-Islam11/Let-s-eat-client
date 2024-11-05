@@ -45,12 +45,12 @@ const Sidebar = () => {
               <span className="text-gray-700">Manage Items</span>
             </li>
           </Link>
-          <Link>
+          <Link to={"/dashboard/manage"}>
             <li className="md:text-lg rounded-md flex items-center gap-3 hover:bg-[#F7F8FA] py-2 md:py-3 px-6 group transition-all">
               <span className="group-hover:text-yellow-500 duration-200 mt-1 text-gray-600">
                 <ion-icon name="clipboard-outline"></ion-icon>
               </span>
-              <span className="text-gray-700">Manage Bookings</span>
+              <span className="text-gray-700">Booking & Payment Management</span>
             </li>
           </Link>
           <Link to={"/dashboard/users"}>

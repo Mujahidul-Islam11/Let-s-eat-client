@@ -10,12 +10,12 @@ const Home = () => {
     return (
         <div className='w-full'>
             <Toaster richColors/>
-           <Banner></Banner>
-           <AboutUs></AboutUs>
-           <Services></Services>
-           <OurMenu></OurMenu>
-           <OurChefs></OurChefs>
-           <Newsletter></Newsletter>
+           <Banner/>
+           <AboutUs/>
+           <Services/>
+           <OurMenu/>
+           <OurChefs/>
+           <Newsletter/>
            
         </div>
     );
