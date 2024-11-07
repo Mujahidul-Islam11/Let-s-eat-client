@@ -28,7 +28,7 @@ const FavDrawer = ({setOpenFavorite, favItems, handleDelete, totalPrice}) => {
               {favItems.length === 0 && <div className="w-full px-8 py-12 border mt-6">
                 <h3 className="text-[16px] text-center font-semibold">No Favorites Yet – Start Adding!</h3>
                 <NavLink to={"/shop"}>
-                  <button className="bg-yellow-400 text-black font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md mx-auto flex justify-center mt-6">
+                  <button onClick={()=> setOpenFavorite(false)} className="bg-yellow-400 text-black font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all size-fit shadow-md mx-auto flex justify-center mt-6">
                     Order Now
                   </button>
                 </NavLink>
