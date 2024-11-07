@@ -78,7 +78,7 @@ const Main = () => {
     <section className="relative">
       <div onClick={() => setOpenMenu(false)} className="w-full lg:max-w-7xl lg:mx-auto">
         <Toaster richColors />
-        <Navbar setOpenMenu={setOpenMenu} openFavorite={openFavorite} setOpenFavorite={setOpenFavorite}></Navbar>
+        <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} openFavorite={openFavorite} setOpenFavorite={setOpenFavorite}></Navbar>
         <div className="py-3">
           <Outlet></Outlet>
         </div>

@@ -5,7 +5,7 @@ import useFavorites from "../../../hooks/useFavorites";
 import useAdmin from "../../../hooks/useAdmin";
 
 const Navbar = ({ openMenu, setOpenMenu, setOpenFavorite }) => {
-  const { user, logOut } = useContext(AuthContext); 
+  const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
   const [favItems] = useFavorites();
 
@@ -31,7 +31,7 @@ const Navbar = ({ openMenu, setOpenMenu, setOpenFavorite }) => {
         </Link>
       </li>
       <li>
-        <Link to={`${user ? "/shop": "/login"}`} className="text-[#000] lg:text-[16px] hover:text-yellow-400 duration-100">
+        <Link to={`${user ? "/shop" : "/login"}`} className="text-[#000] lg:text-[16px] hover:text-yellow-400 duration-100">
           Our Shop
         </Link>
       </li>
@@ -52,7 +52,7 @@ const Navbar = ({ openMenu, setOpenMenu, setOpenFavorite }) => {
     <div className="text-black">
       {/*drawer - Small device */}
       {openMenu && (
-        <div className="z-50 w-40 h-40 absolute top-20 left-3 bg-white shadow-md px-6 py-3 rounded-md">
+        <div className="z-50 w-40 h-40 absolute top-[70px] left-3 bg-white shadow-md px-6 py-3 rounded-md">
           <ul className="space-y-1">{navLists}</ul>
         </div>
       )}
@@ -61,17 +61,21 @@ const Navbar = ({ openMenu, setOpenMenu, setOpenFavorite }) => {
         <nav className="border-b w-full flex justify-between items-center px-2 md:px-4 py-1">
           {/* nav-1*/}
           <div className="flex items-center">
+
             {/* Small device menu button */}
             <div
-              onClick={(e_) => e_.stopPropagation()}
-              className="block md:hidden text-2xl md:text-3xl cursor-pointer mt-5 text-black"
+              onClick={(e) => {
+                e.stopPropagation(); 
+                setOpenMenu(!openMenu); 
+              }}
+              className="block md:hidden text-2xl cursor-pointer mt-5 text-black"
             >
               {openMenu ? (
-                <button onClick={() => setOpenMenu(false)}>
+                <button>
                   <ion-icon name="close-outline"></ion-icon>
                 </button>
               ) : (
-                <button onClick={() => setOpenMenu(true)}>
+                <button>
                   <ion-icon name="menu-outline"></ion-icon>
                 </button>
               )}
@@ -95,7 +99,7 @@ const Navbar = ({ openMenu, setOpenMenu, setOpenFavorite }) => {
           {/* nav-3*/}
           <div className="flex items-center space-x-0 md:space-x-4">
 
-            <div onClick={()=> setOpenFavorite(true)} className="relative text-lg md:text-2xl border text-red-400 flex justify-center items-center shadow-md cursor-pointer rounded-full p-2 md:p-3">
+            <div onClick={() => setOpenFavorite(true)} className="relative text-lg md:text-2xl border text-red-400 flex justify-center items-center shadow-md cursor-pointer rounded-full p-2 md:p-3">
               <ion-icon name="heart-outline"></ion-icon>
               {favItems.length > 0 && <span className="absolute -top-1 right-0 h-[14px] w-[14px] rounded-full bg-red-400"></span>}
             </div>
