@@ -16,7 +16,6 @@ const Home = () => {
            <OurMenu/>
            <OurChefs/>
            <Newsletter/>
-           
         </div>
     );
 };

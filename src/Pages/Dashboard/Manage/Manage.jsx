@@ -3,26 +3,10 @@ import Breadcrumbs from '../../../UI/Breadcrumbs/Breadcrumbs';
 import { NavLink } from 'react-router-dom';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 const Manage = () => {
     const axiosSecure = useAxiosSecure();
-
-    const { data: bookings = [], refetch } = useQuery({
-        queryKey: ["booking"],
-        queryFn: async () => {
-            const res = await axiosSecure.get(`/bookings/admin`);
-            return res.data;
-        }
-    })
-
-    // Payments data API
-    const { data: paymentData = [] } = useQuery({
-        queryKey: ['paymentHistory'],
-        queryFn: async () => {
-            const res = await axiosSecure.get(`/payments`)
-            return res.data
-        }
-    })
     const bookingTableHead = (
         <>
             <th className="px-3 md:px-6 py-2 md:py-4 font-semibold text-gray-600 text-[16px] text-start">
@@ -66,10 +50,68 @@ const Manage = () => {
             </th>
         </>
     );
+
+    // Bookings data
+    const { data: bookings = [], refetch } = useQuery({
+        queryKey: ["booking"],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/bookings/admin`);
+            return res.data;
+        }
+    })
+
+    // Payments data 
+    const { data: paymentData = [] } = useQuery({
+        queryKey: ['paymentHistory'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/payments`)
+            return res.data
+        }
+    })
+
+    // api calls and operations
+    const handleBookingStatus = (booking, index) => {
+        toast.custom((t) => (
+            <div className="shadow-xl p-4 rounded-md bg-white mb-8 space-y-4">
+                <span className="flex justify-center border text-red-300 border-red-300 w-fit mx-auto text-3xl rounded-full p-3">
+                    <ion-icon name="alert-outline"></ion-icon>
+                </span>
+                <h1 className="text-center">
+                Are you sure you want to mark {index} no. booking of {booking?.name} as Confirmed??
+                </h1>
+                <div className="flex justify-center gap-12">
+                    <button
+                        onClick={() => {
+                            toast.dismiss(t);
+                        }}
+                        className="text-sm md:text-[16px] bg-green-500 font-extralight py-2 px-5 rounded-full hover:bg-green-600 transition-all size-fit shadow-md text-white"
+                    >
+                        No
+                    </button>
+                    <button
+                        onClick={() => {
+                            toast.dismiss(t);
+                            updateStatus();
+                        }}
+                        className="text-sm md:text-[16px] bg-red-500 font-extralight py-2 px-5 rounded-full hover:bg-red-600 transition-all size-fit shadow-md text-white"
+                    >
+                        Yes
+                    </button>
+                </div>
+            </div>
+        ));
+        const updateStatus = ()=>{
+            axiosSecure.patch(`/bookings/admin/${booking._id}`)
+            .then(res=>{
+                toast.success(`${index} no. booking marked as confirm`)
+            })
+        }
+    }
+
     return (
         <div className='w-full h-full space-y-12'>
             <Breadcrumbs routeName={"Manage"} pageTitle={"Manage customers payment/booking status"} />
-           {/* Bookings table */}
+            {/* Bookings table */}
             <div className="overflow-x-auto">
                 <table className="min-w-full border-collapse border mx-auto">
                     <thead className="bg-[#F2F2F2]">
@@ -97,7 +139,7 @@ const Manage = () => {
                                     ${booking?.bill}
                                 </td>
                                 <td className={`px-3 md:px-6 py-2 md:py-4 text-[16px] ${booking?.status === "pending" ? "text-yellow-500" : "text-green-500"}`}>
-                                    <span className={`${booking?.status === "pending" && 'border border-yellow-500 py-1 px-2 rounded-full cursor-pointer'} `}>{booking?.status}..</span>
+                                    <span onClick={() => { handleBookingStatus(booking, index+1) }} className={`${booking?.status === "pending" && 'border border-yellow-500 py-1 px-2 rounded-full cursor-pointer'} `}>{booking?.status}..</span>
                                 </td>
                             </tr>
                         ))}

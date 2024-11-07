@@ -57,13 +57,6 @@ const Navbar = ({ openMenu, setOpenMenu, openFavorite, setOpenFavorite }) => {
         </div>
       )}
 
-      {/*drawer (favorites) - Small device */}
-      {openFavorite && (
-        <div className="z-50 w-40 h-40 absolute top-20 right-3 bg-white shadow-md px-6 py-3 rounded-md">
-          <ul className="space-y-1">{navLists}</ul>
-        </div>
-      )}
-
       <div className="bg-white shadow-lg mt-4 mx-2 lg:mx-0">
         <nav className="border-b w-full flex justify-between items-center px-2 md:px-4 py-1">
           {/* nav-1*/}
