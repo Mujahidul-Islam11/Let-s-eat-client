@@ -42,12 +42,12 @@ const FavDrawer = ({setOpenFavorite, favItems, handleDelete, totalPrice}) => {
 
             <div className="mt-4">
               <NavLink to={favItems.length > 0 ? "/dashboard/favorites" : "/shop"}>
-                <button className="w-full bg-yellow-400 font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all shadow-md flex justify-center text-black">
+                <button onClick={()=> {favItems.length === 0 && setOpenFavorite(false)}} className="w-full bg-yellow-400 font-extralight py-3 px-6 rounded-full hover:bg-yellow-500 transition-all shadow-md flex justify-center text-black">
                   View Favorites
                 </button>
               </NavLink>
               <NavLink to={favItems.length > 0 ? "/dashboard/payment": "/shop"}>
-                <button className="w-full bg-yellow-400 font-extralight py-3 px-6 mt-3 rounded-full hover:bg-yellow-500 transition-all shadow-md flex justify-center text-black">
+                <button onClick={()=> {favItems.length === 0 && setOpenFavorite(false)}} className="w-full bg-yellow-400 font-extralight py-3 px-6 mt-3 rounded-full hover:bg-yellow-500 transition-all shadow-md flex justify-center text-black">
                   Checkout
                 </button>
               </NavLink>
