@@ -37,7 +37,7 @@ const FavDrawer = ({setOpenFavorite, favItems, handleDelete, totalPrice}) => {
 
             <div className="flex justify-between text-[16px] font-semibold mt-5">
               <h3>Subtotal:</h3>
-              <h3>${totalPrice || 0}</h3>
+              <h3>${totalPrice.toFixed(2) || 0}</h3>
             </div>
 
             <div className="mt-4">

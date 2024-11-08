@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useFavorites from "../../../hooks/useFavorites";
 import useAdmin from "../../../hooks/useAdmin";
@@ -8,6 +8,7 @@ const Navbar = ({ openMenu, setOpenMenu, setOpenFavorite }) => {
   const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
   const [favItems] = useFavorites();
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     logOut();
@@ -99,7 +100,7 @@ const Navbar = ({ openMenu, setOpenMenu, setOpenFavorite }) => {
           {/* nav-3*/}
           <div className="flex items-center space-x-0 md:space-x-4">
 
-            <div onClick={() => setOpenFavorite(true)} className="relative text-lg md:text-2xl border text-red-400 flex justify-center items-center shadow-md cursor-pointer rounded-full p-2 md:p-3">
+            <div onClick={() => {user ? setOpenFavorite(true): navigate("/login")}} className="relative text-lg md:text-2xl border text-red-400 flex justify-center items-center shadow-md cursor-pointer rounded-full p-2 md:p-3">
               <ion-icon name="heart-outline"></ion-icon>
               {favItems.length > 0 && <span className="absolute -top-1 right-0 h-[14px] w-[14px] rounded-full bg-red-400"></span>}
             </div>
