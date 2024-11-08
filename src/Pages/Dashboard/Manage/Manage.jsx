@@ -29,6 +29,9 @@ const Manage = () => {
             <th className="px-3 md:px-6 py-2 md:py-4 font-semibold text-gray-600 text-[16px] text-start">
                 Status
             </th>
+            <th className="px-3 md:px-6 py-2 md:py-4 font-semibold text-gray-600 text-[16px] text-start">
+                Action
+            </th>
         </>
     );
     const paymentTableHead = (
@@ -48,11 +51,14 @@ const Manage = () => {
             <th className="px-3 md:px-6 py-2 md:py-4 text-start font-semibold text-gray-600 text-[16px]">
                 Status
             </th>
+            <th className="px-3 md:px-6 py-2 md:py-4 text-start font-semibold text-gray-600 text-[16px]">
+                Action
+            </th>
         </>
     );
 
     // Bookings data
-    const { data: bookings = [], refetch } = useQuery({
+    const { data: bookings = [], refetch: refetchBookings } = useQuery({
         queryKey: ["booking"],
         queryFn: async () => {
             const res = await axiosSecure.get(`/bookings/admin`);
@@ -61,7 +67,7 @@ const Manage = () => {
     })
 
     // Payments data 
-    const { data: paymentData = [] } = useQuery({
+    const { data: paymentData = [], refetch: refetchPayments } = useQuery({
         queryKey: ['paymentHistory'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/payments`)
@@ -70,7 +76,7 @@ const Manage = () => {
     })
 
     // api calls and operations
-    const handleBookingStatus = (booking, index) => {
+    const handleConfirmedStatus = (booking, index) => {
         toast.custom((t) => (
             <div className="shadow-xl p-4 rounded-md bg-white mb-8 space-y-4">
                 <span className="flex justify-center border text-red-300 border-red-300 w-fit mx-auto text-3xl rounded-full p-3">
@@ -101,9 +107,88 @@ const Manage = () => {
             </div>
         ));
         const updateStatus = ()=>{
-            axiosSecure.patch(`/bookings/admin/${booking._id}`)
+            axiosSecure.patch(`/bookings/confirm/${booking._id}`)
             .then(res=>{
-                toast.success(`${index} no. booking marked as confirm`)
+                toast.success(`${index} no. booking marked as confirm`);
+                refetchBookings();
+            })
+        }
+    }
+    
+    const handleCanceledStatus = (booking, index) => {
+        toast.custom((t) => (
+            <div className="shadow-xl p-4 rounded-md bg-white mb-8 space-y-4">
+                <span className="flex justify-center border text-red-300 border-red-300 w-fit mx-auto text-3xl rounded-full p-3">
+                    <ion-icon name="alert-outline"></ion-icon>
+                </span>
+                <h1 className="text-center">
+                Are you sure you want to mark {index} no. booking of {booking?.name} as Canceled??
+                </h1>
+                <div className="flex justify-center gap-12">
+                    <button
+                        onClick={() => {
+                            toast.dismiss(t);
+                        }}
+                        className="text-sm md:text-[16px] bg-green-500 font-extralight py-2 px-5 rounded-full hover:bg-green-600 transition-all size-fit shadow-md text-white"
+                        >
+                        No
+                    </button>
+                    <button
+                        onClick={() => {
+                            toast.dismiss(t);
+                            updateStatus();
+                        }}
+                        className="text-sm md:text-[16px] bg-red-500 font-extralight py-2 px-5 rounded-full hover:bg-red-600 transition-all size-fit shadow-md text-white"
+                        >
+                        Yes
+                    </button>
+                </div>
+            </div>
+        ));
+        const updateStatus = ()=>{
+            axiosSecure.patch(`/bookings/cancel/${booking._id}`)
+            .then(res=>{
+                toast.success(`${index} no. booking marked as canceled`);
+                refetchBookings();
+            })
+        }
+    }
+    
+    const handlePaymentStatus = (booking, index) => {
+        toast.custom((t) => (
+            <div className="shadow-xl p-4 rounded-md bg-white mb-8 space-y-4">
+                <span className="flex justify-center border text-red-300 border-red-300 w-fit mx-auto text-3xl rounded-full p-3">
+                    <ion-icon name="alert-outline"></ion-icon>
+                </span>
+                <h1 className="text-center">
+                Are you sure you want to mark {index} no. payment of {booking?.name} as Complete??
+                </h1>
+                <div className="flex justify-center gap-12">
+                    <button
+                        onClick={() => {
+                            toast.dismiss(t);
+                        }}
+                        className="text-sm md:text-[16px] bg-green-500 font-extralight py-2 px-5 rounded-full hover:bg-green-600 transition-all size-fit shadow-md text-white"
+                    >
+                        No
+                    </button>
+                    <button
+                        onClick={() => {
+                            toast.dismiss(t);
+                            updateStatus();
+                        }}
+                        className="text-sm md:text-[16px] bg-red-500 font-extralight py-2 px-5 rounded-full hover:bg-red-600 transition-all size-fit shadow-md text-white"
+                    >
+                        Yes
+                    </button>
+                </div>
+            </div>
+        ));
+        const updateStatus = ()=>{
+            axiosSecure.patch(`/payments/confirm/${booking._id}`)
+            .then(res=>{
+                toast.success(`${index} no. payment marked as complete`);
+                refetchPayments();
             })
         }
     }
@@ -138,8 +223,12 @@ const Manage = () => {
                                 <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-[16px]">
                                     ${booking?.bill}
                                 </td>
-                                <td className={`px-3 md:px-6 py-2 md:py-4 text-[16px] ${booking?.status === "pending" ? "text-yellow-500" : "text-green-500"}`}>
-                                    <span onClick={() => { handleBookingStatus(booking, index+1) }} className={`${booking?.status === "pending" && 'border border-yellow-500 py-1 px-2 rounded-full cursor-pointer'} `}>{booking?.status}..</span>
+                                <td className={`px-3 md:px-6 py-2 md:py-4 text-[16px] ${booking?.status === "canceled" && "text-red-500"} ${booking?.status === "pending" ? "text-yellow-500" : "text-green-500"}`}>
+                                    {booking?.status}..
+                                </td>
+                                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-3xl flex gap-4 items-center mt-2">
+                                    <span onClick={()=> handleConfirmedStatus(booking, index+1)} className='cursor-pointer text-green-500'><ion-icon name="checkmark-circle-outline"></ion-icon></span>
+                                    <span onClick={()=> handleCanceledStatus(booking, index+1)} className='cursor-pointer text-red-500'><ion-icon name="close-circle-outline"></ion-icon></span>
                                 </td>
                             </tr>
                         ))}
@@ -172,7 +261,10 @@ const Manage = () => {
                                     {data?.transactionId}
                                 </td>
                                 <td className={`px-3 md:px-6 py-2 md:py-4 text-[16px] ${data?.status === "pending" ? "text-yellow-500" : "text-green-500"}`}>
-                                    <span className={`${data?.status === "pending" && 'border border-yellow-500 py-1 px-2 rounded-full cursor-pointer'} `}>{data?.status}..</span>
+                                    {data?.status}..
+                                </td>
+                                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-3xl flex justify-center gap-4 items-center mt-2">
+                                    <span onClick={()=> handlePaymentStatus(data, index+1)} className='cursor-pointer text-green-500'><ion-icon name="checkmark-circle-outline"></ion-icon></span>  
                                 </td>
                             </tr>
                         ))}
