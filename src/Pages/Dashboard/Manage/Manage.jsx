@@ -226,9 +226,11 @@ const Manage = () => {
                                 <td className={`px-3 md:px-6 py-2 md:py-4 text-[16px] ${booking?.status === "canceled" && "text-red-500"} ${booking?.status === "pending" ? "text-yellow-500" : "text-green-500"}`}>
                                     {booking?.status}..
                                 </td>
-                                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-3xl flex gap-4 items-center mt-2">
+                                <td className="px-3 md:px-6 py-2 md:py-4 text-gray-800 font-medium text-3xl text-center">
+                                    <div className='flex gap-3'>
                                     <span onClick={()=> handleConfirmedStatus(booking, index+1)} className='cursor-pointer text-green-500'><ion-icon name="checkmark-circle-outline"></ion-icon></span>
                                     <span onClick={()=> handleCanceledStatus(booking, index+1)} className='cursor-pointer text-red-500'><ion-icon name="close-circle-outline"></ion-icon></span>
+                                    </div>
                                 </td>
                             </tr>
                         ))}

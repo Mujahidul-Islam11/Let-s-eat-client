@@ -4,8 +4,8 @@ import { AuthContext } from "../provider/AuthProvider";
 
 
 const axiosSecure = axios.create({
-    // baseURL: "https://let-s-eat-server-nu.vercel.app/"
-    baseURL: "http://localhost:5000/"
+    baseURL: "https://let-s-eat-server-nu.vercel.app/"
+    // baseURL: "http://localhost:5000/"
 })
 const useAxiosSecure = () => {
     const { logOut } = useContext(AuthContext);
